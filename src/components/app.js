@@ -3,7 +3,12 @@ import logo from '../logo.svg'
 import './app.css'
 import CardStack from './look/card-stack'
 
-const data = [{title: 'Hi!', text: 'Hello world!', id: '1', image: 'portrait-1.jpg'}]
+const data = [{
+  id: 1,
+  title: 'Hi!',
+  text: 'Hello world!',
+  image: 'portrait-1.jpg'
+}]
 
 class App extends Component {
   render () {

@@ -1,23 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import classnames from 'classnames'
+import translate3d from './translate3d'
 import './card.css'
 
-function merge (...args) {
-  return Object.assign(...args)
+const initialState = {
+  initialPosition: {
+    x: 0,
+    y: 0
+  }
 }
 
-const Card = React.createClass({
-  getInitialState: function () {
-    return {
-      initialPosition: {
-        x: 0,
-        y: 0
-      }
-    }
-  },
+class Card extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = initialState
+  }
 
-  setInitialPosition: function () {
+  setInitialPosition () {
     const screen = document.getElementById('master-root')
     const card = ReactDOM.findDOMNode(this)
 
@@ -26,41 +26,36 @@ const Card = React.createClass({
       y: Math.round((screen.offsetHeight - card.offsetHeight) / 2)
     }
 
-    this.setState({
-      initialPosition: initialPosition
-    })
-  },
+    this.setState({ initialPosition })
+  }
 
-  componentDidMount: function () {
+  componentDidMount () {
     this.setInitialPosition()
 
     window.addEventListener('resize', this.setInitialPosition)
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount () {
     window.removeEventListener('resize', this.setInitialPosition)
-  },
+  }
 
-  render: function () {
-    const initialTranslate = ''.concat(
-            'translate3d(',
-            this.state.initialPosition.x + 'px,',
-            this.state.initialPosition.y + 'px,',
-            '0px)'
+  render () {
+    const initialTranslate = translate3d(
+            this.state.initialPosition.x,
+            this.state.initialPosition.y
         )
 
-    const style = merge({
-      msTransform: initialTranslate,
-      WebkitTransform: initialTranslate,
+    const style = Object.assign({
       transform: initialTranslate,
       zIndex: this.props.index,
-      backgroundImage: 'url("/' + this.props.image + '")'
-    }, this.props.style)
+      backgroundImage: 'url("/' + this.props.image + '")',
+      ...this.props.style
+    })
 
-    const classes = classnames(Object.assign(
-      { card: true },
-      this.props.classes
-    ))
+    const classes = classnames({
+      card: true,
+      ...this.props.classes
+    })
 
     return (
       <div style={style} className={classes}>
@@ -69,6 +64,6 @@ const Card = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Card
