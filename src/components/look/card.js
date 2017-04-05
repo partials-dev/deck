@@ -1,31 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import classnames from 'classnames'
 import './card.css'
-
-function classSet (classNames) {
-  var names = ''
-
-  if (typeof classNames === 'object') {
-    for (var name in classNames) {
-      if (!classNames.hasOwnProperty(name) || !classNames[name]) {
-        continue
-      }
-      names += name + ' '
-    }
-  } else {
-    for (var i = 0; i < arguments.length; i++) {
-      // We should technically exclude 0 too, but for the sake of backward
-      // compat we'll keep it (for now)
-      if (arguments[i] == null) {
-        continue
-      }
-      names += arguments[i] + ' '
-    }
-  }
-
-  return names.trim()
-}
 
 function merge (...args) {
   return Object.assign(...args)
@@ -81,12 +57,10 @@ const Card = React.createClass({
       backgroundImage: 'url("/' + this.props.image + '")'
     }, this.props.style)
 
-    const classes = classSet(merge(
-      {
-        card: true
-      },
-            this.props.classes
-        ))
+    const classes = classnames(Object.assign(
+      { card: true },
+      this.props.classes
+    ))
 
     return (
       <div style={style} className={classes}>

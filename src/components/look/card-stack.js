@@ -1,30 +1,7 @@
 import React from 'react'
 import DraggableCard from './draggable-card'
 import Card from './card'
-
-function classSet (classNames) {
-  var names = ''
-
-  if (typeof classNames === 'object') {
-    for (var name in classNames) {
-      if (!classNames.hasOwnProperty(name) || !classNames[name]) {
-        continue
-      }
-      names += name + ' '
-    }
-  } else {
-    for (var i = 0; i < arguments.length; i++) {
-      // We should technically exclude 0 too, but for the sake of backward
-      // compat we'll keep it (for now)
-      if (arguments[i] == null) {
-        continue
-      }
-      names += arguments[i] + ' '
-    }
-  }
-
-  return names.trim()
-}
+import classnames from 'classnames'
 
 const CardStack = React.createClass({
   getInitialState: function () {
@@ -72,12 +49,12 @@ const CardStack = React.createClass({
       return React.createElement(component, props)
     }, this)
 
-    const classesAlertLeft = classSet({
+    const classesAlertLeft = classnames({
       'alert-visible': this.state.alertLeft,
       'alert-left': true,
       'alert': true
     })
-    const classesAlertRight = classSet({
+    const classesAlertRight = classnames({
       'alert-visible': this.state.alertRight,
       'alert-right': true,
       'alert': true
