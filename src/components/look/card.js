@@ -1,69 +1,25 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import classnames from 'classnames'
-import translate3d from './translate3d'
 import './card.css'
 
-const initialState = {
-  initialPosition: {
-    x: 0,
-    y: 0
-  }
-}
+const Card = props => {
+  const style = Object.assign({
+    zIndex: props.index,
+    backgroundImage: 'url("/' + props.image + '")',
+    ...props.style
+  })
 
-class Card extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = initialState
-  }
+  const classes = classnames({
+    card: true,
+    ...props.classes
+  })
 
-  setInitialPosition () {
-    const screen = document.getElementById('master-root')
-    const card = ReactDOM.findDOMNode(this)
-
-    const initialPosition = {
-      x: Math.round((screen.offsetWidth - card.offsetWidth) / 2),
-      y: Math.round((screen.offsetHeight - card.offsetHeight) / 2)
-    }
-
-    this.setState({ initialPosition })
-  }
-
-  componentDidMount () {
-    this.setInitialPosition()
-
-    window.addEventListener('resize', this.setInitialPosition)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('resize', this.setInitialPosition)
-  }
-
-  render () {
-    const initialTranslate = translate3d(
-            this.state.initialPosition.x,
-            this.state.initialPosition.y
-        )
-
-    const style = Object.assign({
-      transform: initialTranslate,
-      zIndex: this.props.index,
-      backgroundImage: 'url("/' + this.props.image + '")',
-      ...this.props.style
-    })
-
-    const classes = classnames({
-      card: true,
-      ...this.props.classes
-    })
-
-    return (
-      <div style={style} className={classes}>
-        <h1>{this.props.title}</h1>
-        <p>{this.props.text}</p>
-      </div>
-    )
-  }
+  return (
+    <div style={style} className={classes}>
+      <h1>{props.title}</h1>
+      <p>{props.text}</p>
+    </div>
+  )
 }
 
 export default Card
