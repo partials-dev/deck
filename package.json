@@ -1,0 +1,24 @@
+{
+  "name": "game-jam-2017",
+  "version": "0.0.1",
+  "description": "Partials' submission to the 2017 Athens game jam.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/partials-dev/game-jam-2017.git"
+  },
+  "keywords": [
+    "game-jam",
+    "athens",
+    "music"
+  ],
+  "author": "Partials + Ben Edwards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/partials-dev/game-jam-2017/issues"
+  },
+  "homepage": "https://github.com/partials-dev/game-jam-2017#readme"
+}
