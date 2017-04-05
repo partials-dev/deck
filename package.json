@@ -1,24 +1,20 @@
 {
-  "name": "game-jam-2017",
-  "version": "0.0.1",
-  "description": "Partials' submission to the 2017 Athens game jam.",
-  "main": "index.js",
+  "name": "@noise-machines/game-jam-2017",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/partials-dev/game-jam-2017.git"
-  },
-  "keywords": [
-    "game-jam",
-    "athens",
-    "music"
-  ],
-  "author": "Partials + Ben Edwards",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/partials-dev/game-jam-2017/issues"
-  },
-  "homepage": "https://github.com/partials-dev/game-jam-2017#readme"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
