@@ -73,8 +73,16 @@ li {
     border-radius: 3px;
 }
 
+.card.left h1 {
+  background-color: blue;
+}
+
+.card.right h1 {
+  background-color: red;
+}
+
 .animate {
-    transition: transform 100ms;
+    transition: transform 0.3s;
 }
 
 .alert {

@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Hammer from 'hammerjs'
 import Card from './card'
 import translate3d from './translate3d'
@@ -7,7 +6,7 @@ import translate3d from './translate3d'
 const DraggableCard = React.createClass({
   resetPosition () {
     const screen = document.getElementById('master-root')
-    const card = ReactDOM.findDOMNode(this)
+    const card = this.card
 
     const initialPosition = {
       x: Math.round((screen.offsetWidth - card.offsetWidth) / 2),
@@ -36,7 +35,10 @@ const DraggableCard = React.createClass({
       }
     },
     panmove ({ deltaX, deltaY }) {
-      const position = this.calculatePosition(deltaX, deltaY)
+      const position = {
+        x: this.props.initialPosition.x + deltaX,
+        y: this.props.initialPosition.y + deltaY
+      }
       this.props.setPosition(position)
     },
     pancancel (ev) {
@@ -52,13 +54,6 @@ const DraggableCard = React.createClass({
 
   handleSwipe (ev) {
     console.log(ev.type)
-  },
-
-  calculatePosition (deltaX, deltaY) {
-    return {
-      x: (this.props.initialPosition.x + deltaX),
-      y: (this.props.initialPosition.y + deltaY)
-    }
   },
 
   componentDidMount () {
@@ -84,12 +79,12 @@ const DraggableCard = React.createClass({
   },
 
   render () {
-    const translate = translate3d(this.props.position.x, this.props.position.y)
-    const style = {
-      transform: translate
+    const translate = translate3d(this.props.position)
+    const style = { transform: translate }
+    const classes = {
+      animate: this.props.animate,
+      [this.props.leanDirection]: true
     }
-
-    const classes = { animate: this.props.animate }
 
     const gotRef = card => { this.card = card }
 

@@ -6,7 +6,8 @@ const mapStateToProps = ({ currentCard }, props) => {
   return {
     animate: currentCard.animate,
     position: currentCard.position,
-    initialPosition: currentCard.initialPosition
+    initialPosition: currentCard.initialPosition,
+    leanDirection: currentCard.leanDirection
   }
 }
 

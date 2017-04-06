@@ -54,4 +54,28 @@ describe('updateCurrentCard()', () => {
     expect(firstCard.id).not.toEqual(nextCard.id)
     expect(nextCard.id).toEqual('test')
   })
+  it('should compute right lean properly', () => {
+    const firstCard = currentCard()
+    const position = { x: 1, y: 1 }
+    const initialPosition = { x: 0, y: 0 }
+    const action = actions.updateCurrentCard({ position, initialPosition })
+    const nextCard = currentCard(firstCard, action)
+    expect(nextCard.leanDirection).toEqual('right')
+  })
+  it('should compute left lean properly', () => {
+    const firstCard = currentCard()
+    const position = { x: -1, y: -1 }
+    const initialPosition = { x: 0, y: 0 }
+    const action = actions.updateCurrentCard({ position, initialPosition })
+    const nextCard = currentCard(firstCard, action)
+    expect(nextCard.leanDirection).toEqual('left')
+  })
+  it('should compute no lean properly', () => {
+    const firstCard = currentCard()
+    const position = { x: 0, y: 0 }
+    const initialPosition = { x: 0, y: 0 }
+    const action = actions.updateCurrentCard({ position, initialPosition })
+    const nextCard = currentCard(firstCard, action)
+    expect(nextCard.leanDirection).toEqual('middle')
+  })
 })
