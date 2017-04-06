@@ -3,14 +3,10 @@ import Hammer from 'hammerjs'
 import Card from './card'
 import translate3d from './translate3d'
 
-const isOutScreenLeft = ({ x }) => x < -50
-const isOutScreenRight = ({ x }) => x < -50
-
 const DraggableCard = React.createClass({
   resetPosition () {
     const screen = document.getElementById('master-root')
     const card = this.card
-
     this.props.resetPosition(screen, card)
   },
 
@@ -19,13 +15,9 @@ const DraggableCard = React.createClass({
       this.props.setAnimate(false)
     },
     panend (ev) {
-      const screen = document.getElementById('master-root')
-      const card = this.card
-
-      if (this.props.position.x < -50) {
-        this.props.onOutScreenLeft(this.props.cardId)
-      } else if ((this.props.position.x + (card.offsetWidth - 50)) > screen.offsetWidth) {
-        this.props.onOutScreenRight(this.props.cardId)
+      const leanDirection = this.props.leanDirection
+      if (leanDirection !== 'middle') {
+        this.props.onOutScreen(leanDirection, this.props.cardId)
       } else {
         this.props.setAnimate(true)
         this.resetPosition()

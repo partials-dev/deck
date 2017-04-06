@@ -35,4 +35,4 @@ function isFullScreen () {
   return doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement || navigator.standalone
 }
 
-root.onclick = () => { if (!isFullScreen()) toggleFullScreen() }
+// root.onclick = () => { if (!isFullScreen()) toggleFullScreen() }
