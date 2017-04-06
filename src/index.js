@@ -21,13 +21,18 @@ function toggleFullScreen () {
   var docEl = doc.documentElement
 
   var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen
-  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen
+  var exitFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen
 
-  if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+  if (!isFullScreen()) {
     requestFullScreen.call(docEl)
   } else {
-    cancelFullScreen.call(doc)
+    exitFullScreen.call(doc)
   }
 }
 
-root.onclick = () => toggleFullScreen()
+function isFullScreen () {
+  const doc = window.document
+  return doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement || navigator.standalone
+}
+
+root.onclick = () => { if (!isFullScreen()) toggleFullScreen() }

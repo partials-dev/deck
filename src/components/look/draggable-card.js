@@ -39,6 +39,7 @@ const DraggableCard = React.createClass({
         x: this.props.initialPosition.x + deltaX,
         y: this.props.initialPosition.y + deltaY
       }
+      console.log(JSON.stringify(position))
       this.props.setPosition(position)
     },
     pancancel (ev) {
