@@ -4,7 +4,7 @@ import { updateCurrentCard, updateScreen, resetCurrentCardPosition } from '../..
 
 const mapStateToProps = ({ currentCard }, props) => {
   return {
-    animate: currentCard.animate,
+    userIsTouching: currentCard.userIsTouching,
     position: currentCard.position,
     initialPosition: currentCard.initialPosition,
     leanDirection: currentCard.leanDirection
@@ -13,8 +13,8 @@ const mapStateToProps = ({ currentCard }, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setAnimate (animate) {
-      dispatch(updateCurrentCard({ animate }))
+    setUserIsTouching (userIsTouching) {
+      dispatch(updateCurrentCard({ userIsTouching }))
     },
     setPosition (position) {
       dispatch(updateCurrentCard({ position }))

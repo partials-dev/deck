@@ -12,14 +12,14 @@ const DraggableCard = React.createClass({
 
   panHandlers: {
     panstart () {
-      this.props.setAnimate(false)
+      this.props.setUserIsTouching(true)
     },
     panend (ev) {
+      this.props.setUserIsTouching(false)
       const leanDirection = this.props.leanDirection
       if (leanDirection !== 'middle') {
         this.props.onOutScreen(leanDirection, this.props.cardId)
       } else {
-        this.props.setAnimate(true)
         this.resetPosition()
       }
     },
@@ -71,7 +71,7 @@ const DraggableCard = React.createClass({
     const translate = translate3d(this.props.position)
     const style = { transform: translate }
     const classes = {
-      animate: this.props.animate,
+      'user-is-touching': this.props.userIsTouching,
       [this.props.leanDirection]: true
     }
 

@@ -6,7 +6,7 @@ const defaultState = {
   title: 'Hi!',
   text: 'Hello world!',
   image: 'portrait-1.jpg',
-  animate: false,
+  userIsTouching: false,
   position: { x: 0, y: 0 },
   initialPosition: { x: 0, y: 0 },
   leanDirection: 'middle',
