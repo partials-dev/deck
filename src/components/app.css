@@ -65,6 +65,7 @@ li {
 .card {
     background-color: white;
     background-size: cover;
+    background-position: center;
     box-shadow: 0px 0px 5px black;
     position: absolute;
     height: 540px;
@@ -74,7 +75,7 @@ li {
 }
 
 .card.left h1 {
-  background-color: blue;
+  background-color: lightblue;
 }
 
 .card.right h1 {
