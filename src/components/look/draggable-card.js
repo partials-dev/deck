@@ -2,25 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Hammer from 'hammerjs'
 import Card from './card'
+import translate3d from './translate3d'
 
 const DraggableCard = React.createClass({
-  getInitialState: function () {
-    return {
-      x: 0,
-      y: 0,
-      initialPosition: {
-        x: 0,
-        y: 0
-      },
-      startPosition: {
-        x: 0,
-        y: 0
-      },
-      animation: null
-    }
-  },
-
-  resetPosition: function () {
+  resetPosition () {
     const screen = document.getElementById('master-root')
     const card = ReactDOM.findDOMNode(this)
 
@@ -29,90 +14,68 @@ const DraggableCard = React.createClass({
       y: Math.round((screen.offsetHeight - card.offsetHeight) / 2)
     }
 
-    const initialState = this.getInitialState()
-    this.setState(
-      {
-        x: initialPosition.x,
-        y: initialPosition.y,
-        initialPosition: initialPosition,
-        startPosition: initialState.startPosition
-      }
-        )
+    this.props.setPosition(initialPosition)
+    this.props.setInitialPosition(initialPosition)
   },
 
   panHandlers: {
-    panstart: function () {
-      this.setState({
-        animation: false,
-        startPosition: {
-          x: this.state.x,
-          y: this.state.y
-        }
-      })
+    panstart () {
+      this.props.setAnimate(false)
     },
-    panend: function (ev) {
+    panend (ev) {
       const screen = document.getElementById('master-root')
-      const card = ReactDOM.findDOMNode(this)
+      const card = this.card
 
-      if (this.state.x < -50) {
+      if (this.props.position.x < -50) {
         this.props.onOutScreenLeft(this.props.cardId)
-      } else if ((this.state.x + (card.offsetWidth - 50)) > screen.offsetWidth) {
+      } else if ((this.props.position.x + (card.offsetWidth - 50)) > screen.offsetWidth) {
         this.props.onOutScreenRight(this.props.cardId)
       } else {
+        this.props.setAnimate(true)
         this.resetPosition()
-        this.setState({
-          animation: true
-        })
       }
     },
-    panmove: function (ev) {
-      this.setState(this.calculatePosition(
-                ev.deltaX, ev.deltaY
-            ))
+    panmove ({ deltaX, deltaY }) {
+      const position = this.calculatePosition(deltaX, deltaY)
+      this.props.setPosition(position)
     },
-    pancancel: function (ev) {
+    pancancel (ev) {
       console.log(ev.type)
     }
   },
 
-  handlePan: function (ev) {
+  handlePan (ev) {
     ev.preventDefault()
     this.panHandlers[ev.type].call(this, ev)
     return false
   },
 
-  handleSwipe: function (ev) {
+  handleSwipe (ev) {
     console.log(ev.type)
   },
 
-  calculatePosition: function (deltaX, deltaY) {
+  calculatePosition (deltaX, deltaY) {
     return {
-      x: (this.state.initialPosition.x + deltaX),
-      y: (this.state.initialPosition.y + deltaY)
+      x: (this.props.initialPosition.x + deltaX),
+      y: (this.props.initialPosition.y + deltaY)
     }
   },
 
-  componentDidMount: function () {
-    this.hammer = new Hammer.Manager(ReactDOM.findDOMNode(this))
+  componentDidMount () {
+    const card = this.card
+    this.hammer = new Hammer.Manager(card)
     this.hammer.add(new Hammer.Pan({threshold: 0}))
 
-    const events = [
-            ['panstart panend pancancel panmove', this.handlePan],
-      ['swipestart swipeend swipecancel swipemove',
-        this.handleSwipe]
-    ]
-
-    events.forEach(function (data) {
-      if (data[0] && data[1]) {
-        this.hammer.on(data[0], data[1])
-      }
-    }, this)
+    const panEvents = 'panstart panend pancancel panmove'
+    this.hammer.on(panEvents, this.handlePan)
+    const swipeEvents = 'swipestart swipeend swipecancel swipemove'
+    this.hammer.on(swipeEvents, this.handleSwipe)
 
     this.resetPosition()
     window.addEventListener('resize', this.resetPosition)
   },
 
-  componentWillUnmount: function () {
+  componentWillUnmount () {
     this.hammer.stop()
     this.hammer.destroy()
     this.hammer = null
@@ -120,27 +83,20 @@ const DraggableCard = React.createClass({
     window.removeEventListener('resize', this.resetPosition)
   },
 
-  render: function () {
-    const translate = ''.concat(
-            'translate3d(',
-            this.state.x + 'px,',
-            this.state.y + 'px,',
-            '0px)'
-        )
-
+  render () {
+    const translate = translate3d(this.props.position.x, this.props.position.y)
     const style = {
-      msTransform: translate,
-      WebkitTransform: translate,
       transform: translate
     }
 
-    const classes = {
-      animate: this.state.animation
-    }
+    const classes = { animate: this.props.animate }
 
-    return (<Card {...this.props}
+    const gotRef = card => { this.card = card }
+
+    return <Card {...this.props}
+      gotRef={gotRef}
       style={style}
-      classes={classes} />)
+      classes={classes} />
   }
 })
 

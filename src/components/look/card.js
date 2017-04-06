@@ -15,7 +15,7 @@ const Card = props => {
   })
 
   return (
-    <div style={style} className={classes}>
+    <div ref={props.gotRef} style={style} className={classes}>
       <h1>{props.title}</h1>
       <p>{props.text}</p>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import DraggableCard from './draggable-card'
+import CurrentCard from '../work/current-card'
 import Card from './card'
 import classnames from 'classnames'
 
@@ -43,7 +43,7 @@ const CardStack = React.createClass({
       }
 
       const component = (index === (coll.length - 1))
-                    ? DraggableCard
+                    ? CurrentCard
                     : Card
 
       return React.createElement(component, props)

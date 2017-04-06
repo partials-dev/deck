@@ -1,1 +1,2 @@
 export const GET_NEXT_CARD = 'GET_NEXT_CARD'
+export const UPDATE_CURRENT_CARD = 'UPDATE_CURRENT_CARD'
