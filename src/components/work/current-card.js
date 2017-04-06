@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import DraggableCard from '../look/draggable-card'
-import { updateCurrentCard } from '../../actions'
+import { updateCurrentCard, updateScreen, resetCurrentCardPosition } from '../../actions'
 
 const mapStateToProps = ({ currentCard }, props) => {
   return {
@@ -21,6 +21,26 @@ const mapDispatchToProps = dispatch => {
     },
     setInitialPosition (initialPosition) {
       dispatch(updateCurrentCard({ initialPosition }))
+    },
+    setCardSize (size) {
+      dispatch(updateCurrentCard({ size }))
+    },
+    setScreenSize (size) {
+      dispatch(updateScreen({ size }))
+    },
+    resetPosition (screen, card) {
+      // make sure screen size and card size are set
+      this.setScreenSize({
+        width: screen.offsetWidth,
+        height: screen.offsetHeight
+      })
+
+      this.setCardSize({
+        width: card.offsetWidth,
+        height: card.offsetHeight
+      })
+
+      dispatch(resetCurrentCardPosition())
     }
   }
 }

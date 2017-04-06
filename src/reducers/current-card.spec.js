@@ -70,7 +70,7 @@ describe('updateCurrentCard()', () => {
     const nextCard = currentCard(firstCard, action)
     expect(nextCard.leanDirection).toEqual('left')
   })
-  it('should compute no lean properly', () => {
+  it('should compute middle lean properly', () => {
     const firstCard = currentCard()
     const position = { x: 0, y: 0 }
     const initialPosition = { x: 0, y: 0 }

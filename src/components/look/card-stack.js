@@ -35,8 +35,7 @@ const CardStack = React.createClass({
       const props = {
         cardId: c.id,
         index: index,
-        onOutScreenLeft: this.removeCard.bind(this, 'left'),
-        onOutScreenRight: this.removeCard.bind(this, 'right'),
+        onOutScreen: this.removeCard.bind(this),
         title: c.title,
         text: c.text,
         image: c.image

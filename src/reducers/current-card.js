@@ -1,4 +1,5 @@
 import * as types from '../actions/types'
+import getLeanDirectionFor from './get-lean-direction-for'
 
 const defaultState = {
   id: 'start',
@@ -8,27 +9,24 @@ const defaultState = {
   animate: false,
   position: { x: 0, y: 0 },
   initialPosition: { x: 0, y: 0 },
-  leanDirection: 'middle'
+  leanDirection: 'middle',
+  size: { width: null, height: null }
 }
 
 export const cardProperties = Object.keys(defaultState)
-const getLeanDirectionFor = (position, initialPosition) => {
-  const relativeX = position.x - initialPosition.x
-  if (relativeX < 0) return 'left'
-  if (relativeX > 0) return 'right'
-  return 'middle'
+
+function updateCurrentCard (state, card = {}) {
+  const newCard = { ...state, ...card }
+  newCard.leanDirection = getLeanDirectionFor(newCard.position, newCard.initialPosition)
+  return newCard
 }
 
 export default function (state = defaultState, action = {}) {
   switch (action.type) {
     case types.UPDATE_CURRENT_CARD:
-      const card = action.card || {}
-      const newCard = { ...state, ...card }
-      newCard.leanDirection = getLeanDirectionFor(newCard.position, newCard.initialPosition)
-      return newCard
+      return updateCurrentCard(state, action.card)
     case types.GET_NEXT_CARD:
-      const newCurrentCard = { ...state, title: `${state.title}!` }
-      return newCurrentCard
+      return { ...state, title: `${state.title}!` }
     default:
       return state
   }
