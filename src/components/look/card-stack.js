@@ -4,7 +4,7 @@ import Card from './card'
 
 export default function CardStack (props) {
   const cards = props.cards.map((card, index, coll) => {
-    const props = {
+    const cardProps = {
       ...card,
       index: index,
       onOutScreen: props.removeCard
@@ -12,7 +12,7 @@ export default function CardStack (props) {
 
     const isLastCard = index === (coll.length - 1)
     const component = isLastCard ? CurrentCard : Card
-    return React.createElement(component, props)
+    return React.createElement(component, cardProps)
   })
 
   return (

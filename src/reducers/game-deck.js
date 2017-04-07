@@ -26,7 +26,8 @@ export default function (state = defaultState, action = {}) {
     }
     case types.REMOVE_CARD: {
       const cards = state.cards.filter(card => card.id !== action.id)
-      return { ...state, cards }
+      const newState = { ...state, cards }
+      return newState
     }
     case types.GET_NEXT_CARD: {
       throw new Error('not implemented yet')
