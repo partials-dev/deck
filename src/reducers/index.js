@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux'
 import * as types from '../actions/types'
-import currentCard from './current-card'
+import * as actions from '../actions'
 import screen from './screen'
-import getLeanDirectionFor from './get-lean-direction-for'
+import gameDeck from './game-deck'
+// import getLeanDirectionFor from './get-lean-direction-for'
 
-const combined = combineReducers({ currentCard, screen })
+const combined = combineReducers({ gameDeck, screen })
 
 function resetCurrentCardPosition (state) {
+  const currentCard = state.gameDeck.cards[0]
   const screenWidth = state.screen.size.width
   const screenHeight = state.screen.size.height
-  const cardWidth = state.currentCard.size.width
-  const cardHeight = state.currentCard.size.height
+  const cardWidth = currentCard.size.width
+  const cardHeight = currentCard.size.height
 
   if (screenWidth == null || screenHeight == null) {
     throw new Error('Screen dimensions must be defined.')
@@ -26,14 +28,9 @@ function resetCurrentCardPosition (state) {
   }
 
   const initialPosition = position
-  const leanDirection = getLeanDirectionFor(position, initialPosition)
-  const currentCard = {
-    ...state.currentCard,
-    position,
-    initialPosition,
-    leanDirection
-  }
-  return { ...state, currentCard }
+  const updateCurrentCard = actions.updateCurrentCard({ position, initialPosition })
+  const deck = gameDeck(state.gameDeck, updateCurrentCard)
+  return { ...state, gameDeck: deck }
 }
 
 export default function rootReducer (state, action = {}) {

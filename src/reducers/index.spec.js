@@ -18,7 +18,7 @@ describe('resetCurrentCardPosition()', () => {
   it('resets the current card position', () => {
     const actionList = [updateScreen, updateCurrentCard, resetCurrentCardPosition]
     const finalState = applyActions(rootReducer, actionList)
-    const { currentCard } = finalState
+    const currentCard = finalState.gameDeck.cards[0]
 
     const expectedPosition = { x: 2, y: 1 }
     expect(currentCard.position).toEqual(expectedPosition)

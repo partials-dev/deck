@@ -2,6 +2,7 @@ import React from 'react'
 import Hammer from 'hammerjs'
 import Card from './card'
 import translate3d from './translate3d'
+import { SIDES } from '../../reducers/get-lean-direction-for'
 
 const DraggableCard = React.createClass({
   resetPosition () {
@@ -17,7 +18,7 @@ const DraggableCard = React.createClass({
     panend (ev) {
       this.props.setUserIsTouching(false)
       const leanDirection = this.props.leanDirection
-      if (leanDirection !== 'middle') {
+      if (leanDirection !== SIDES.MIDDLE) {
         this.props.onOutScreen(leanDirection, this.props.cardId)
       } else {
         this.resetPosition()

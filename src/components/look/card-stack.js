@@ -6,7 +6,6 @@ import classnames from 'classnames'
 const CardStack = React.createClass({
   getInitialState: function () {
     return {
-      cards: this.props.initialCardsData,
       alertLeft: false,
       alertRight: false
     }
@@ -21,17 +20,15 @@ const CardStack = React.createClass({
       }
     }.bind(this), 3000)
 
+    this.props.removeCard({ id: cardId, side })
     this.setState({
-      cards: this.state.cards.filter(function (c) {
-        return c.id !== cardId
-      }),
       alertLeft: side === 'left',
       alertRight: side === 'right'
     })
   },
 
   render: function () {
-    const cards = this.state.cards.map(function (c, index, coll) {
+    const cards = this.props.cards.map(function (c, index, coll) {
       const props = {
         cardId: c.id,
         index: index,

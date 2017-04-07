@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "decamelize": "^1.2.0",
     "hammerjs": "^2.0.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
