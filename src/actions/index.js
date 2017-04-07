@@ -53,6 +53,16 @@ export function updateScreen (screen = {}) {
 }
 updateScreen._validArgumentsExample = defaultScreen
 
+export function resetCardPosition (id) {
+  if (id == null) {
+    throw new Error('Must specify an id when resetting card position.')
+  }
+  return {
+    type: types.RESET_CARD_POSITION
+  }
+}
+resetCardPosition._validArgumentsExample = defaultCard.id
+
 export function resetCurrentCardPosition () {
   return {
     type: types.RESET_CURRENT_CARD_POSITION

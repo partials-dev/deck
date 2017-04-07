@@ -20,20 +20,6 @@ test('the starting value is a card', () => {
   expectToBeACard(card)
 })
 
-Object.keys(actions).map(key => actions[key]).forEach(actionCreator => {
-  test.skip(`${actionCreator.name}() doesn't mutate the current card`, () => {
-    const action = actionCreator()
-    const firstCard = cardReducer()
-    const nextCard = cardReducer(firstCard, action)
-    if (firstCard === nextCard) {
-      // State hasn't changed. All fields should be the same.
-      expect(firstCard).toEqual(nextCard)
-    } else {
-      expect(firstCard).not.toBe(nextCard)
-    }
-  })
-})
-
 describe('updateCard()', () => {
   fit('updates the fields of a card', () => {
     const firstCard = cardReducer()

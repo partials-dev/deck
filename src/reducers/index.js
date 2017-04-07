@@ -7,7 +7,7 @@ import gameDeck from './game-deck'
 
 const combined = combineReducers({ gameDeck, screen })
 
-function resetCurrentCardPosition (state) {
+function resetCardPosition (state) {
   const currentCard = state.gameDeck.cards[0]
   const screenWidth = state.screen.size.width
   const screenHeight = state.screen.size.height
@@ -15,11 +15,11 @@ function resetCurrentCardPosition (state) {
   const cardHeight = currentCard.size.height
 
   if (screenWidth == null || screenHeight == null) {
-    throw new Error('Screen dimensions must be defined.')
+    throw new Error('Screen dimensions must have already been set.')
   }
 
   if (cardWidth == null || cardHeight == null) {
-    throw new Error('Card dimensions must be defined.')
+    throw new Error('Card dimensions must have already been set.')
   }
 
   const position = {
@@ -36,7 +36,9 @@ function resetCurrentCardPosition (state) {
 export default function rootReducer (state, action = {}) {
   switch (action.type) {
     case types.RESET_CURRENT_CARD_POSITION:
-      return resetCurrentCardPosition(state, action)
+      return resetCardPosition(state, action)
+    case types.RESET_CARD_POSITION:
+      return resetCardPosition(state, action)
     default:
       return combined(state, action)
   }

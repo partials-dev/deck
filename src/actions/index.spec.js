@@ -12,12 +12,14 @@ describe('actions', () => {
       expect(action.type).toEqual(expectedType)
     })
   })
+
   describe('updateCurrentCard()', () => {
     it('throws an error if you try to update an invalid property', () => {
       const createInvalidAction = () => actions.updateCurrentCard({ derp: 'derp' })
       expect(createInvalidAction).toThrow('These properties aren\'t permitted on a card')
     })
   })
+
   describe('updateCard()', () => {
     it('throws an error if you try to update an invalid property', () => {
       const createInvalidAction = () => actions.updateCard({ id: 'hi', derp: 'derp' })
@@ -40,6 +42,17 @@ describe('actions', () => {
     it('throws an error if you don\'t pass a card id', () => {
       const createInvalidAction = () => actions.removeCard({ id: null, side: SIDES.LEFT })
       expect(createInvalidAction).toThrow('Must specify an id when removing a card.')
+    })
+    it('throws an error if you pass an invalid side', () => {
+      const createInvalidAction = () => actions.removeCard({ id: 'a-card-id', side: 'not-a-valid-side' })
+      expect(createInvalidAction).toThrow('Side must be one of')
+    })
+  })
+
+  describe('resetCardPosition()', () => {
+    it('throws an error if you don\'t pass a card id', () => {
+      const createInvalidAction = () => actions.resetCardPosition(null)
+      expect(createInvalidAction).toThrow('Must specify an id when resetting card position.')
     })
     it('throws an error if you pass an invalid side', () => {
       const createInvalidAction = () => actions.removeCard({ id: 'a-card-id', side: 'not-a-valid-side' })

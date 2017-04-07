@@ -9,28 +9,32 @@ const defaultState = {
   ]
 }
 
-function updateCurrentCard (currentCard, updates) {
-  // transform an updateCurrentCard action into an updateCard action
-  const newUpdates = { ...updates, id: currentCard.id }
-  const updateCard = actions.updateCard(newUpdates)
-  const updated = cardReducer(currentCard, updateCard)
-  return updated
-}
-export default function (state = defaultState, action = {}) {
+const matches = card => otherCard => card.id === otherCard.id
+
+export default function gameDeck (state = defaultState, action = {}) {
   switch (action.type) {
     case types.UPDATE_CURRENT_CARD: {
-      const updatedCard = updateCurrentCard(state.cards[0], action.updates)
-      const cards = [updatedCard, ...state.cards.slice(1)]
-      const newState = { ...state, cards }
+      const newUpdates = { ...action.updates, id: state.cards[0].id }
+      const updateCard = actions.updateCard(newUpdates)
+      return gameDeck(state, updateCard)
+    }
+    case types.UPDATE_CARD: {
+      const index = state.cards.findIndex(matches(action.updates))
+      const card = state.cards[index]
+      const updatedCard = cardReducer(card, action)
+
+      const newCards = state.cards.slice()
+      newCards[index] = updatedCard
+      const newState = { ...state, cards: newCards }
       return newState
     }
     case types.REMOVE_CARD: {
-      const cards = state.cards.filter(card => card.id !== action.id)
-      const newState = { ...state, cards }
-      return newState
-    }
-    case types.GET_NEXT_CARD: {
-      throw new Error('not implemented yet')
+      const isCardToRemove = ({ id }) => id === action.id
+      const indexToRemove = state.cards.findIndex(isCardToRemove)
+      const isIndexToKeep = (_, index) => index !== indexToRemove
+      const cards = state.cards.filter(isIndexToKeep)
+
+      return { ...state, cards }
     }
     default:
       return state

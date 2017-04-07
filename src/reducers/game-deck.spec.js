@@ -26,24 +26,13 @@ describe('gameDeck', () => {
     it('should remove the card with the specified id', () => {
       const first = gameDeck()
       const cardToRemove = first.cards[0]
+      cardToRemove.id = 'remove card test id'
       expect(cardToRemove).toEqual(expect.anything())
 
       const removeCard = actions.removeCard({ id: cardToRemove.id, side: SIDES.LEFT })
       const next = gameDeck(first, removeCard)
       const nextIds = next.cards.map(card => card.id)
       expect(nextIds).not.toContain(cardToRemove.id)
-    })
-  })
-  describe('getNextCard()', () => {
-    it.skip('generates a different card', () => {
-      const firstCard = cardReducer()
-      const nextCard = cardReducer(firstCard, actions.getNextCard())
-      expect(nextCard).not.toBe(firstCard)
-    })
-    it.skip('generates a card', () => {
-      const firstCard = cardReducer()
-      const nextCard = cardReducer(firstCard, actions.getNextCard())
-      expectToBeACard(nextCard)
     })
   })
 })
