@@ -6,6 +6,7 @@ export default function CardStack (props) {
   const cards = props.cards.map((card, index, coll) => {
     const cardProps = {
       ...card,
+      key: index,
       index: index,
       onOutScreen: props.removeCard
     }
