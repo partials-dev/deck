@@ -19,7 +19,7 @@ const DraggableCard = React.createClass({
       this.props.setUserIsTouching(false)
       const leanDirection = this.props.leanDirection
       if (leanDirection !== SIDES.MIDDLE) {
-        this.props.onOutScreen(leanDirection, this.props.cardId)
+        this.props.onOutScreen({ side: leanDirection, id: this.props.cardId })
       } else {
         this.resetPosition()
       }
