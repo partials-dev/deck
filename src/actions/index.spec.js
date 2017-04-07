@@ -18,6 +18,14 @@ describe('actions', () => {
       const createInvalidAction = () => actions.updateCurrentCard({ derp: 'derp' })
       expect(createInvalidAction).toThrow('These properties aren\'t permitted on a card')
     })
+    it('throws an error if you pass it null', () => {
+      const createInvalidAction = () => actions.updateCurrentCard(null)
+      expect(createInvalidAction).toThrow('Updates must be defined.')
+    })
+    it('throws an error if you pass it undefined', () => {
+      const createInvalidAction = () => actions.updateCurrentCard(undefined)
+      expect(createInvalidAction).toThrow('Updates must be defined.')
+    })
   })
 
   describe('updateCard()', () => {
@@ -29,12 +37,28 @@ describe('actions', () => {
       const createInvalidAction = () => actions.updateCard({})
       expect(createInvalidAction).toThrow('Must specify an id when updating a card')
     })
+    it('throws an error if you pass it null', () => {
+      const createInvalidAction = () => actions.updateCard(null)
+      expect(createInvalidAction).toThrow('Updates must be defined.')
+    })
+    it('throws an error if you pass it undefined', () => {
+      const createInvalidAction = () => actions.updateCard(undefined)
+      expect(createInvalidAction).toThrow('Updates must be defined.')
+    })
   })
 
-  describe('updateScreenSize()', () => {
+  describe('updateScreen()', () => {
     it('throws an error if you try to update an invalid property', () => {
       const createInvalidAction = () => actions.updateScreen({ derp: 'derp' })
       expect(createInvalidAction).toThrow('These properties aren\'t permitted on a screen')
+    })
+    it('throws an error if you pass it null', () => {
+      const createInvalidAction = () => actions.updateScreen(null)
+      expect(createInvalidAction).toThrow('Screen must be defined.')
+    })
+    it('throws an error if you pass it undefined', () => {
+      const createInvalidAction = () => actions.updateScreen(undefined)
+      expect(createInvalidAction).toThrow('Screen must be defined.')
     })
   })
 
@@ -57,6 +81,21 @@ describe('actions', () => {
     it('throws an error if you pass an invalid side', () => {
       const createInvalidAction = () => actions.removeCard({ id: 'a-card-id', side: 'not-a-valid-side' })
       expect(createInvalidAction).toThrow('Side must be one of')
+    })
+  })
+
+  describe('appendCard()', () => {
+    it('throws an error if the card doesn\'t have an id', () => {
+      const createInvalidAction = () => actions.appendCard({ title: 'hi' })
+      expect(createInvalidAction).toThrow('Must specify an id when appending a card.')
+    })
+    it('throws an error if you pass it null', () => {
+      const createInvalidAction = () => actions.appendCard(null)
+      expect(createInvalidAction).toThrow('Can\'t append an undefined card.')
+    })
+    it('throws an error if you pass it undefined', () => {
+      const createInvalidAction = () => actions.appendCard(undefined)
+      expect(createInvalidAction).toThrow('Can\'t append an undefined card.')
     })
   })
 })

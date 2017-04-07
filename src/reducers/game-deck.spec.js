@@ -35,4 +35,14 @@ describe('gameDeck', () => {
       expect(nextIds).not.toContain(cardToRemove.id)
     })
   })
+
+  describe('appendCard()', () => {
+    it('should append the card to the end of the deck', () => {
+      const cardToAppend = { id: 'card to append', title: 'hi' }
+      const appendCard = actions.appendCard(cardToAppend)
+      const next = gameDeck(undefined, appendCard)
+      const lastCard = next.cards[next.cards.length - 1]
+      expect(lastCard).toEqual(cardToAppend)
+    })
+  })
 })

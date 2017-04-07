@@ -7,18 +7,10 @@ import { isInvalid, throwIfInvalidProperties } from './invalid-properties'
 
 const validSides = Object.keys(SIDES).map(key => SIDES[key])
 
-export function getNextCard (direction) {
-  if (isInvalid(validSides)(direction)) {
-    throw new Error(`Side must be one of ${validSides.join(', ')}, but got ${direction}.`)
+export function updateCard (updates) {
+  if (updates == null) {
+    throw new Error('Updates must be defined.')
   }
-  return {
-    type: types.GET_NEXT_CARD,
-    direction
-  }
-}
-getNextCard._validArgumentsExample = validSides[0]
-
-export function updateCard (updates = {}) {
   throwIfInvalidProperties('card', updates, cardProperties)
   if (updates.id == null) throw new Error('Must specify an id when updating a card.')
   return {
@@ -28,7 +20,10 @@ export function updateCard (updates = {}) {
 }
 updateCard._validArgumentsExample = defaultCard
 
-export function updateCurrentCard (updates = {}) {
+export function updateCurrentCard (updates) {
+  if (updates == null) {
+    throw new Error('Updates must be defined.')
+  }
   if (updates.id != null) {
     throw new Error('Can\'t set an id when updating the current card')
   }
@@ -44,7 +39,10 @@ updateCurrentCard._validArgumentsExample = {
   id: undefined
 }
 
-export function updateScreen (screen = {}) {
+export function updateScreen (screen) {
+  if (screen == null) {
+    throw new Error('Screen must be defined.')
+  }
   throwIfInvalidProperties('screen', screen, screenProperties)
   return {
     type: types.UPDATE_SCREEN,
@@ -84,3 +82,20 @@ export function removeCard ({ id, side }) {
   }
 }
 removeCard._validArgumentsExample = { id: 'remove card example', side: validSides[0] }
+
+export function appendCard (card) {
+  if (card == null) {
+    throw new Error('Can\'t append an undefined card.')
+  }
+
+  throwIfInvalidProperties('card', card, cardProperties)
+
+  if (card.id == null) {
+    throw new Error('Must specify an id when appending a card.')
+  }
+  return {
+    type: types.APPEND_CARD,
+    card
+  }
+}
+appendCard._validArgumentsExample = defaultCard

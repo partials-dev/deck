@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import CardStack from '../look/card-stack'
-import { removeCard } from '../../actions'
+import { removeCard, appendCard } from '../../actions'
 
 const mapStateToProps = state => {
   return {
@@ -8,10 +8,11 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     removeCard (card) {
       dispatch(removeCard(card))
+      dispatch(appendCard(props.getNextCard()))
     }
   }
 }

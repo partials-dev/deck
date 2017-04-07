@@ -36,6 +36,10 @@ export default function gameDeck (state = defaultState, action = {}) {
 
       return { ...state, cards }
     }
+    case types.APPEND_CARD: {
+      const cards = [...state.cards, action.card]
+      return { ...state, cards }
+    }
     default:
       return state
   }
