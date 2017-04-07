@@ -56,7 +56,8 @@ export function resetCardPosition (id) {
     throw new Error('Must specify an id when resetting card position.')
   }
   return {
-    type: types.RESET_CARD_POSITION
+    type: types.RESET_CARD_POSITION,
+    id
   }
 }
 resetCardPosition._validArgumentsExample = defaultCard.id

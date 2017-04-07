@@ -17,6 +17,7 @@ const Card = props => {
   return (
     <div ref={props.gotRef} style={style} className={classes}>
       <h1>{props.leanDirection}</h1>
+      <h2>{props.title}</h2>
     </div>
   )
 }

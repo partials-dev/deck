@@ -7,12 +7,12 @@ import gameDeck from './game-deck'
 
 const combined = combineReducers({ gameDeck, screen })
 
-function resetCardPosition (state) {
-  const currentCard = state.gameDeck.cards[0]
-  const screenWidth = state.screen.size.width
-  const screenHeight = state.screen.size.height
-  const cardWidth = currentCard.size.width
-  const cardHeight = currentCard.size.height
+function resetCardPosition (state, card) {
+  const screen = state.screen
+  const screenWidth = screen.size.width
+  const screenHeight = screen.size.height
+  const cardWidth = card.size.width
+  const cardHeight = card.size.height
 
   if (screenWidth == null || screenHeight == null) {
     throw new Error('Screen dimensions must have already been set.')
@@ -28,17 +28,24 @@ function resetCardPosition (state) {
   }
 
   const initialPosition = position
-  const updateCurrentCard = actions.updateCurrentCard({ position, initialPosition })
-  const deck = gameDeck(state.gameDeck, updateCurrentCard)
+  const updateCard = actions.updateCard({ id: card.id, position, initialPosition })
+  const deck = gameDeck(state.gameDeck, updateCard)
   return { ...state, gameDeck: deck }
 }
 
 export default function rootReducer (state, action = {}) {
   switch (action.type) {
     case types.RESET_CURRENT_CARD_POSITION:
-      return resetCardPosition(state, action)
+      return resetCardPosition(state, state.gameDeck.cards[0])
     case types.RESET_CARD_POSITION:
-      return resetCardPosition(state, action)
+      const card = state.gameDeck.cards.find(card => card.id === action.id)
+      return resetCardPosition(state, card)
+    // case types.APPEND_CARD:
+    //   // append card to deck
+    //   const deck = gameDeck(state.gameDeck, action)
+    //   const newState = { ...state, gameDeck: deck }
+    //   // reset its position
+    //   return rootReducer(newState, actions.resetCardPosition(action.card.id))
     default:
       return combined(state, action)
   }
