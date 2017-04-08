@@ -66,11 +66,14 @@ describe('musicReducer', () => {
   })
   describe('swipeDown()', () => {
     it('should set showInstrument to false', () => {
-      const first = musicReducer(undefined, swipeDown())
+      const first = musicReducer(undefined, swipeUp())
       expect(first.showInstrument).toEqual(true)
 
       const next = musicReducer(first, swipeDown())
-      expect(next.showInstrument).toEqual(true)
+      expect(next.showInstrument).toEqual(false)
+
+      const nextNext = musicReducer(first, swipeDown())
+      expect(nextNext.showInstrument).toEqual(false)
     })
   })
 })
