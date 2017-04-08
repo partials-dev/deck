@@ -1,11 +1,14 @@
 ---
 title:
-id:
 left:
   link:
   text:
 right:
   link:
   text:
+song:
+  replaceRoom:
+  with:
 ---
-text here
+
+This is the card body.
