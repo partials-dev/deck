@@ -5,7 +5,7 @@ import cardReducer from './card'
 
 const defaultState = {
   cards: [
-    defaultCard
+    // defaultCard
   ]
 }
 

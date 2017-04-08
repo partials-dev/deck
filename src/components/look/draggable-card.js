@@ -70,7 +70,8 @@ const DraggableCard = React.createClass({
   render () {
     const classes = {
       'user-is-touching': this.props.userIsTouching,
-      [this.props.leanDirection]: true
+      [this.props.leanDirection]: true,
+      draggable: true
     }
 
     const gotRef = card => { this.card = card }

@@ -82,7 +82,7 @@ li {
   background-color: red;
 }
 
-.card:not(.user-is-touching) {
+.draggable.card:not(.user-is-touching) {
     transition: transform 0.3s;
 }
 
