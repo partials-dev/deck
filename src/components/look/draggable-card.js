@@ -1,14 +1,13 @@
 import React from 'react'
 import Hammer from 'hammerjs'
 import Card from './card'
-import translate3d from './translate3d'
+// import translate3d from './translate3d'
 import { SIDES } from '../../reducers/get-lean-direction-for'
 
 const DraggableCard = React.createClass({
   resetPosition () {
     const screen = document.getElementById('master-root')
-    const card = this.card
-    this.props.resetPosition(screen, card)
+    this.props.resetPosition(screen, this.card)
   },
 
   panHandlers: {
@@ -69,8 +68,6 @@ const DraggableCard = React.createClass({
   },
 
   render () {
-    const translate = translate3d(this.props.position)
-    const style = { transform: translate }
     const classes = {
       'user-is-touching': this.props.userIsTouching,
       [this.props.leanDirection]: true
@@ -80,7 +77,6 @@ const DraggableCard = React.createClass({
 
     return <Card {...this.props}
       gotRef={gotRef}
-      style={style}
       classes={classes} />
   }
 })

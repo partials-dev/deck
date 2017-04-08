@@ -11,8 +11,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     removeCard (card) {
+      const nextCard = props.getNextCard()
+      console.log('appending ' + JSON.stringify(nextCard))
       dispatch(removeCard(card))
-      dispatch(appendCard(props.getNextCard()))
+      dispatch(appendCard(nextCard))
     }
   }
 }

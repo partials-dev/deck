@@ -1,18 +1,20 @@
 import React from 'react'
 import CurrentCard from '../work/current-card'
-import Card from './card'
+import GameCard from '../work/game-card'
 
 export default function CardStack (props) {
-  const cards = props.cards.map((card, index, coll) => {
+  const cards = props.cards.map((card, i, collection) => {
+    const index = collection.length - (i + 1)
     const cardProps = {
       ...card,
-      key: index,
-      index: index,
+      key: card.id,
+      index,
       onOutScreen: props.removeCard
     }
 
-    const isLastCard = index === (coll.length - 1)
-    const component = isLastCard ? CurrentCard : Card
+    const isLastCard = index === (collection.length - 1)
+    const component = isLastCard ? CurrentCard : GameCard
+    // const component = GameCard
     return React.createElement(component, cardProps)
   })
 

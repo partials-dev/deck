@@ -37,6 +37,11 @@ export default function gameDeck (state = defaultState, action = {}) {
       return { ...state, cards }
     }
     case types.APPEND_CARD: {
+      state.cards.forEach(card => {
+        if (card.id === action.card.id) {
+          throw new Error('Ids must be unique.')
+        }
+      })
       const cards = [...state.cards, action.card]
       return { ...state, cards }
     }

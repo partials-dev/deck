@@ -5,13 +5,28 @@ import { createStore } from 'redux'
 
 import App from './components/app'
 import reducers from './reducers'
+import defaultCard from './reducers/default-card'
+import * as actions from './actions'
 
-const store = createStore(reducers)
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(reducers, reduxDevTools)
+
+let nextId = 0
+function getNextCard () {
+  const i = Math.round(Math.random() * 3) + 1 // 1 to 4
+  const nextCard = { ...defaultCard, image: `portrait-${i}.jpg`, id: nextId }
+  nextId++
+  return nextCard
+}
+
+const appendCard = card => store.dispatch(actions.appendCard(card))
+const cards = [getNextCard(), getNextCard(), getNextCard(), getNextCard()]
+cards.forEach(appendCard)
 
 const root = document.getElementById('master-root')
 render(
   <Provider store={store}>
-    <App />
+    <App getNextCard={getNextCard} />
   </Provider>,
   root
 )

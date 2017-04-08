@@ -12,12 +12,13 @@ const mapStateToProps = ({ gameDeck }, props) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     setUserIsTouching (userIsTouching) {
       dispatch(updateCurrentCard({ userIsTouching }))
     },
     setPosition (position) {
+      console.log('setting current card position on ' + props.index)
       dispatch(updateCurrentCard({ position }))
     },
     setInitialPosition (initialPosition) {
