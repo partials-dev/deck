@@ -23,7 +23,7 @@ class Card extends React.Component {
 
   render () {
     const style = Object.assign({
-      zIndex: this.props.index,
+      zIndex: this.props.index + 1,
       backgroundImage: 'url("/' + this.props.image + '")',
       transform: translate3d(this.props.position),
       ...this.props.style

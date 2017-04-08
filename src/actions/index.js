@@ -7,6 +7,53 @@ import { isInvalid, throwIfInvalidProperties } from './invalid-properties'
 
 const validSides = Object.keys(SIDES).map(key => SIDES[key])
 
+export function swipeUp () {
+  return {
+    type: types.SWIPE_UP
+  }
+}
+swipeUp._validArgumentsExample = undefined
+
+export function swipeDown () {
+  return {
+    type: types.SWIPE_DOWN
+  }
+}
+swipeDown._validArgumentsExample = undefined
+
+export function setScoreLength (scoreLength) {
+  if (scoreLength == null || isNaN(scoreLength)) {
+    throw new Error('Score length must be a number.')
+  }
+  return {
+    type: types.SET_SCORE_LENGTH,
+    scoreLength
+  }
+}
+setScoreLength._validArgumentsExample = 1
+
+export function playNote (note) {
+  if (note == null || isNaN(note)) {
+    throw new Error('Note must be a number.')
+  }
+  return {
+    type: types.PLAY_NOTE,
+    note
+  }
+}
+playNote._validArgumentsExample = 1
+
+export function setScore (score) {
+  if (!Array.isArray(score)) {
+    throw new Error('Score must be an array.')
+  }
+  return {
+    type: types.SET_SCORE,
+    score
+  }
+}
+setScore._validArgumentsExample = []
+
 export function updateCard (updates) {
   if (updates == null) {
     throw new Error('Updates must be defined.')

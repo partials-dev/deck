@@ -1,12 +1,12 @@
 const parseDirectory = require('parse-dir')
 const frontMatter = require('front-matter')
-const path = require('path')
 
 function validate () {
 
 }
 
-parseDirectory(__dirname + '/cards/**/*.md', (err, files) => {
+const currentDirectory = __dirname
+parseDirectory(currentDirectory + '/cards/**/*.md', (err, files) => {
   if (err) {
     throw err
   }

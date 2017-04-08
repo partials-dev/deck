@@ -27,7 +27,7 @@ describe('root reducer', () => {
       const finalState = applyActions(rootReducer, actionList)
       const currentCard = finalState.gameDeck.cards[0]
 
-      const expectedPosition = { x: 2, y: 1 }
+      const expectedPosition = { x: -2, y: -1 }
       expect(currentCard.position).toEqual(expectedPosition)
       expect(currentCard.initialPosition).toEqual(expectedPosition)
     })
@@ -50,7 +50,7 @@ describe('root reducer', () => {
       const finalState = applyActions(rootReducer, actionList)
       const isCardToUpdate = ({ id }) => id === idToUpdate
       const updated = finalState.gameDeck.cards.find(isCardToUpdate)
-      const expectedPosition = { x: 2, y: 1 }
+      const expectedPosition = { x: -2, y: -1 }
 
       expect(updated.position).toEqual(expectedPosition)
       expect(updated.initialPosition).toEqual(expectedPosition)

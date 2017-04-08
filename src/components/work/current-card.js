@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateCurrentCard({ userIsTouching }))
     },
     setPosition (position) {
-      console.log('setting current card position on ' + props.index)
       dispatch(updateCurrentCard({ position }))
     },
     setInitialPosition (initialPosition) {

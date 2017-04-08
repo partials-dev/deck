@@ -1,6 +1,5 @@
 ---
 title: Cliff
-id: cliff
 left:
   link: forrest
   text: Just kidding, go back.
@@ -9,6 +8,7 @@ right:
   text: Just kidding, go back.
 song:
   replaceRoom:
-  with: 
+  with:
 ---
+
 You fall off a cliff. Burton. You ded.

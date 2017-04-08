@@ -1,5 +1,10 @@
 .app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   text-align: center;
+  height: 100%;
 }
 
 .app-logo {
@@ -82,8 +87,20 @@ li {
   background-color: red;
 }
 
+.card.up h1 {
+  background-color: orange;
+}
+
+.card.down h1 {
+  background-color: lightgreen;
+}
+
 .draggable.card:not(.user-is-touching) {
     transition: transform 0.3s;
+}
+
+.transition-transform {
+  transition: transform 0.3s;
 }
 
 .alert {
@@ -115,4 +132,29 @@ li {
     background: orange;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+}
+
+.instrument button {
+  border: none;
+  cursor: pointer;
+}
+
+.instrument {
+  position: absolute;
+  z-index: 0;
+}
+
+#cards {
+  z-index: 1;
+}
+.instrument button:active {
+
+}
+
+.instrument button:focus {
+  outline: none;
+}
+
+.instrument * {
+  -webkit-user-drag: none;
 }

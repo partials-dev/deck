@@ -1,5 +1,6 @@
 ---
 title:
+image:
 left:
   link:
   text:

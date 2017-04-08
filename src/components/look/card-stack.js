@@ -1,6 +1,7 @@
 import React from 'react'
 import CurrentCard from '../work/current-card'
 import GameCard from '../work/game-card'
+import classnames from 'classnames'
 
 export default function CardStack (props) {
   const cards = props.cards.map((card, i, collection) => {
@@ -9,7 +10,7 @@ export default function CardStack (props) {
       ...card,
       key: card.id,
       index,
-      onOutScreen: props.removeCard
+      onOutScreen: props.onOutScreen
     }
 
     const isLastCard = index === (collection.length - 1)
@@ -18,8 +19,15 @@ export default function CardStack (props) {
     return React.createElement(component, cardProps)
   })
 
+  const style = {
+    ...props.style,
+    transform: `translateY(${props.translateY}px)`
+  }
+  const classes = classnames({
+    ...props.classes
+  })
   return (
-    <div id='cards'>
+    <div id='cards' className={classes} style={style}>
       {cards}
     </div>
   )

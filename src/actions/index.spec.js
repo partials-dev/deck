@@ -12,7 +12,44 @@ describe('actions', () => {
       expect(action.type).toEqual(expectedType)
     })
   })
-
+  describe('setScoreLength()', () => {
+    it('should throw an error if it\'s passed anything but a number', () => {
+      const passNull = () => actions.setScoreLength(null)
+      const passString = () => actions.setScoreLength('derp')
+      const passObject = () => actions.setScoreLength({})
+      expect(passNull).toThrow('Score length must be a number.')
+      expect(passString).toThrow('Score length must be a number.')
+      expect(passObject).toThrow('Score length must be a number.')
+    })
+  })
+  describe('playNote()', () => {
+    it('should throw an error if it\'s passed anything but a number', () => {
+      const passNull = () => actions.playNote(null)
+      const passString = () => actions.playNote('derp')
+      const passObject = () => actions.playNote({})
+      expect(passNull).toThrow('Note must be a number.')
+      expect(passString).toThrow('Note must be a number.')
+      expect(passObject).toThrow('Note must be a number.')
+    })
+    it('should not throw an error if it\'s passed an array', () => {
+      const passArray = () => actions.playNote([])
+      expect(passArray).not.toThrow('Score must be an array.')
+    })
+  })
+  describe('setScore()', () => {
+    it('should throw an error if it\'s passed anything but an array', () => {
+      const passNull = () => actions.setScore(null)
+      const passString = () => actions.setScore('derp')
+      const passObject = () => actions.setScore({})
+      expect(passNull).toThrow('Score must be an array.')
+      expect(passString).toThrow('Score must be an array.')
+      expect(passObject).toThrow('Score must be an array.')
+    })
+    it('should not throw an error if it\'s passed an array', () => {
+      const passArray = () => actions.setScore([])
+      expect(passArray).not.toThrow('Score must be an array.')
+    })
+  })
   describe('updateCurrentCard()', () => {
     it('throws an error if you try to update an invalid property', () => {
       const createInvalidAction = () => actions.updateCurrentCard({ derp: 'derp' })

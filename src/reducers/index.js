@@ -3,9 +3,10 @@ import * as types from '../actions/types'
 import * as actions from '../actions'
 import screen from './screen'
 import gameDeck from './game-deck'
+import music from './music'
 // import getLeanDirectionFor from './get-lean-direction-for'
 
-const combined = combineReducers({ gameDeck, screen })
+const combined = combineReducers({ gameDeck, screen, music })
 
 function resetCardPosition (state, card) {
   const screen = state.screen
@@ -22,9 +23,14 @@ function resetCardPosition (state, card) {
     throw new Error('Card dimensions must have already been set.')
   }
 
+  // const position = {
+  //   x: Math.round((screenWidth - cardWidth) / 2),
+  //   y: Math.round((screenHeight - cardHeight) / 2)
+  // }
   const position = {
-    x: Math.round((screenWidth - cardWidth) / 2),
-    y: Math.round((screenHeight - cardHeight) / 2)
+    x: -cardWidth / 2,
+    // x: 0,
+    y: -cardHeight / 2
   }
 
   const initialPosition = position
