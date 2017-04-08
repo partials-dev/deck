@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "front-matter": "^2.1.2",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "decamelize": "^1.2.0",
     "hammerjs": "^2.0.8",
+    "parse-dir": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -18,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && firebase deploy",
+    "parse": "node parse-story"
   }
 }

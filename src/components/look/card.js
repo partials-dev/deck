@@ -11,8 +11,6 @@ class Card extends React.Component {
   }
 
   componentDidMount () {
-    console.log('--- COMPONENT DID MOUNT ---')
-    console.log(this.props.id)
     this.resetPosition = this.resetPosition.bind(this)
     this.resetPosition()
     window.addEventListener('resize', this.resetPosition)
@@ -30,7 +28,6 @@ class Card extends React.Component {
       transform: translate3d(this.props.position),
       ...this.props.style
     })
-    console.log(this.props.index + ', ' + JSON.stringify(this.props.position))
     const classes = classnames({
       card: true,
       ...this.props.classes
