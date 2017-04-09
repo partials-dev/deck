@@ -2,164 +2,168 @@ title: Start
 id: start C1
 image: forest-fork.png
 left:
-  link: forest fork C2A
-  text: Go Left
+ link: forest fork C2A
+ text: Take the road on the left
 right:
-  link: forest dead end C2B
-  text: Go Right
+ link: forest dead end C2B
+ text: Take the road less traveled by
 sound:
-  playOnceOnEnter:
-  setBackgroundTo: forest-music-2nd-draft.mp3
+ setBackgroundTo: forest-music-2nd-draft.mp3
 ---
-Two roads, one less traveled...
+Two roads diverge in the wood,
+And you can not travel both.
 ---
 title: Forest Fork
 id: forest fork C2A
 image: forest-fork.png
 left:
-  link: character C3A
-  text: Go Left
+ link: character C3A
+ text: Follow the road on the left
 right:
-  link: temple entrance C3B
-  text: Go Right
-sound:
-  playOnceOnEnter: ding.wav
+ link: temple entrance C3B
+ text: Follow the road on the right
 ---
-A fork in the path
+Another fork in the road.
+Decisions, decisions.
 ---
 title: Forest Dead End
 id: forest dead end C2B
 image: forest-dead-end.png
 left:
-  link: start C1
-  text: Turn Around
+ link: start C1
+ text: Turn Around
 right:
-  link: start C1
-  text: Turn Around
-sound:
-  setBackgroundTo: ding.wav
+ link: start C1
+ text: Turn Around
 ---
-Nowhere to go
+Alas, the lack of travelers has made this road impassable.
 ---
 title: Character
 id: character C3A
 image: forest-character.png
 left:
-  link: forest fork C2A
-  text: Turn Around
+ link: forest fork C2A
+ text: Turn Around
 right:
-  link: forest fork C2A
-  text: Turn Around
+ link: forest fork C2A
+ text: Turn Around
 ---
-You meet a guy
+
+
+
+
 ---
 title: Temple Entrance
 id: temple entrance C3B
 image: temple-entrance.png
 left:
-  link: temple fork C4
-  text: Go Forward
+ link: temple fork C4
+ text: Go in the door
 right:
-  link: temple fork C4
-  text: Go Forward
+ link: temple fork C4
+ text: Go in the door
+sound:
+ setBackgroundTo: forest-music-2nd-draft.mp3
 ---
-Ancient sentient music box creature
+You're not sure if what you're looking at is a building, a giant, or a musical instrument but there "is" a door in front of you.
 ---
 title: Temple Fork
 id: temple fork C4
 image: temple-fork-1.png
 left:
-  link: temple dead end C5A
-  text: Go Left
+ link: temple dead end C5A
+ text: Go in the door to the left
 right:
-  link: temple fork 2 C5B
-  text: Go Right
+ link: temple fork 2 C5B
+ text: Go in the door to the right
+sound:
+ setBackgroundTo: dungeon-song-3rd-draft.mp3
 ---
-Creaking gears and leaking winds
+The sounds of creaking gears and hissing pipes reverberate around the damp, stone room.
 ---
 title: Temple Dead End
 id: temple dead end C5A
 image: temple-dead-end.png
 left:
-  link: temple fork C4
-  text: Turn Around
+ link: temple fork C4
+ text: Turn Around
 right:
-  link: temple fork C4
-  text: Turn Around
+ link: temple fork C4
+ text: Turn Around
 ---
-Ancient sentient music box creature
+It seems the hallway has collapsed up ahead.
 ---
 title: Temple Fork 2
 id: temple fork 2 C5B
 image: temple-fork-2.png
 left:
-  link: locked door C6A
-  text: Turn Left
+ link: locked door C6A
+ text: Go in the door to the left
 right:
-  link: switch C6B
-  text: Turn Right
+ link: switch C6B
+ text: Go in the door to the right
 ---
-An interesting choice
+More creaking and hissing. You also notice a low, ominous hum coming from the door to the right.
 ---
 title: Locked Door
 id: locked door C6A
 image: temple-locked-door.png
 left:
-  link: temple hallway C7
-  text: Go Through the Door
+ link: temple hallway C7
+ text: Turn Around
 right:
-  link: temple hallway C7
-  text: Go through the door
+ link: temple hallway C7
+ text: Turn Around
 ---
-The way forward is closed
+There only seems to be hissing pipes and a door that's barred shut in this room.
 ---
 title: Unlocked Door
 id: unlocked door C6A
 image: temple-unlocked-door.png
 left:
-  link: temple hallway C7
-  text: Go Through the Door
+ link: temple hallway C7
+ text: Go through the door
 right:
-  link: temple hallway C7
-  text: Go through the door
+ link: temple hallway C7
+ text: Go through the door
 ---
-The way forward is open
+There seem to be some hissing pipes and a door in this room.
 ---
 title: Switch
 id: switch C6B
 image: temple-switch-open.png
 left:
-  link: temple fork 2 C5B
-  text: Turn Around
+ link: temple fork 2 C5B
+ text: Turn Around
 right:
-  link: temple fork 2 C5B
-  text: Turn Around
+ link: temple fork 2 C5B
+ text: Turn Around
 song:
-  replaceRoom: locked door C6A
-  with: unlocked door C6A
+ replaceRoom: locked door C6A
+ with: unlocked door C6A
 ---
-The way forward is closed
+There are some weird mechanisms in here and some foreign graffiti on the wall.
 ---
 title: Temple Hallway
 id: temple hallway C7
 image: temple-hallway.png
 left:
-  link: heart room C8
-  text: Go Forward
+ link: heart room C8
+ text: Keep going forward
 right:
-  link: heart room C8
-  text: Go Forward
+ link: heart room C8
+ text: Keep going forward
 ---
-You hear music playing...
+You hear music playing up ahead...
 ---
 title: Heart Room
 id: heart room C8
 image: temple-heart-room.png
 left:
-  link:
-  text: Learn the song
+ link:
+ text: Learn the song
 right:
-  link:
-  text: Learn the song
+ link:
+ text: Learn the song
 ---
-You learn a song
+You learn a song.
