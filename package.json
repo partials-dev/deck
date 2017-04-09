@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run parse && npm run build && firebase deploy",
     "parse": "node ./src/tasks/parse-story-file"
   }
 }
