@@ -7,6 +7,9 @@ left:
 right:
   link: forest dead end C2B
   text: Go Right
+sound:
+  onEnter:
+  setBackgroundTo: forest-music-2nd-draft.mp3
 ---
 Two roads, one less traveled...
 ---
@@ -19,6 +22,9 @@ left:
 right:
   link: temple entrance C3B
   text: Go Right
+sound:
+  onEnter: ding.wav
+  setBackgroundTo:
 ---
 A fork in the path
 ---

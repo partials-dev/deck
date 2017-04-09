@@ -12,7 +12,11 @@ const defaultCard = {
   left: { link: null, text: null },
   right: { link: null, text: null },
   body: null,
-  song: { replaceRoom: null, with: null }
+  song: { replaceRoom: null, with: null },
+  sound: {
+    onEnter: null,
+    setBackgroundTo: 'forest-music-2nd-draft.mp3'
+  }
 }
 
 export default defaultCard

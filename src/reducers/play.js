@@ -1,6 +1,12 @@
 if (window.AudioNode) {
   const Tone = require('tone')
 
+  const player = new Tone.Player({
+  	url: 'forest-music-2nd-draft.mp3',
+  	autostart: true,
+    loop: true
+  }).toMaster()
+
   const synth = new Tone.PolySynth(3, Tone.Synth).toMaster()
   synth.set({
     envelope: {
