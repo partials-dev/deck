@@ -102,7 +102,7 @@ An interesting choice
 ---
 title: Locked Door
 id: locked door C6A
-image: forest-fork.png
+image: temple-locked-door.png
 left:
   link: temple hallway C7
   text: Go Through the Door
@@ -114,6 +114,7 @@ The way forward is closed
 ---
 title: Unlocked Door
 id: unlocked door C6A
+image: temple-unlocked-door.png
 left:
   link: temple hallway C7
   text: Go Through the Door
