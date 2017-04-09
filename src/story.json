@@ -11,6 +11,9 @@
       "link": "forest dead end C2B",
       "text": "Go Right"
     },
+    "sound": {
+      "setBackgroundTo": "forest-music-2nd-draft.mp3"
+    },
     "body": "Two roads, one less traveled..."
   },
   {
@@ -25,6 +28,9 @@
       "link": "temple entrance C3B",
       "text": "Go Right"
     },
+    "sound": {
+      "playOnceOnEnter": "ding.wav"
+    },
     "body": "A fork in the path"
   },
   {
@@ -38,6 +44,9 @@
     "right": {
       "link": "start C1",
       "text": "Turn Around"
+    },
+    "sound": {
+      "setBackgroundTo": "ding.wav"
     },
     "body": "Nowhere to go"
   },
@@ -114,7 +123,7 @@
   {
     "title": "Locked Door",
     "id": "locked door C6A",
-    "image": "forest-fork.png",
+    "image": "temple-locked-door.png",
     "left": {
       "link": "temple hallway C7",
       "text": "Go Through the Door"
@@ -128,6 +137,7 @@
   {
     "title": "Unlocked Door",
     "id": "unlocked door C6A",
+    "image": "temple-unlocked-door.png",
     "left": {
       "link": "temple hallway C7",
       "text": "Go Through the Door"

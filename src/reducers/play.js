@@ -1,11 +1,9 @@
+const noOp = () => {}
+
 if (window.AudioNode) {
   const Tone = require('tone')
 
-  const player = new Tone.Player({
-  	url: 'forest-music-2nd-draft.mp3',
-  	autostart: true,
-    loop: true
-  }).toMaster()
+  let backgroundMusic = null
 
   const synth = new Tone.PolySynth(3, Tone.Synth).toMaster()
   synth.set({
@@ -19,20 +17,49 @@ if (window.AudioNode) {
   })
 
   const noteIdToPitches = {
-    0: ['C3', 'C4', 'G4'],
-    1: ['C3', 'D4', 'Ab4'],
-    2: ['C3', 'Eb4', 'Bb4'],
-    3: ['C3', 'F'],
-    4: ['C3', 'G'],
-    5: ['C3', 'Ab'],
-    6: ['C3', 'Bb'],
-    7: ['C3', 'C5']
+    0: ['C4', 'Eb4'],
+    1: ['D4', 'F4'],
+    2: ['Eb4', 'G4'],
+    3: ['F'],
+    4: ['G'],
+    5: ['Ab'],
+    6: ['Bb'],
+    7: ['C5']
   }
-
-  module.exports = function play (noteId) {
+  const playNote = (noteId) => {
     const pitches = noteIdToPitches[noteId]
     synth.triggerAttackRelease(pitches, '4n')
   }
+  const playOnce = (url) => {
+    const toPlayOnce = new Tone.Player({
+      url,
+      autostart: true
+    }).toMaster()
+  }
+  const setBackgroundTo = (url) => {
+    const newBackgroundMusic = new Tone.Player({
+      url,
+      autostart: true,
+      loop: true
+    }).toMaster()
+    const updateBackgroundMusic = () => {
+      if (backgroundMusic) {
+        backgroundMusic.stop()
+      }
+      backgroundMusic = newBackgroundMusic
+      Tone.Buffer.off('load', updateBackgroundMusic)
+    }
+    Tone.Buffer.on('load', updateBackgroundMusic)
+  }
+  module.exports = {
+    playNote,
+    playOnce,
+    setBackgroundTo
+  }
 } else {
-  module.exports = () => {}
+  module.exports = {
+    playNote: noOp,
+    playOnce: noOp,
+    setBackgroundTo: noOp
+  }
 }

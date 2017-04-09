@@ -4,9 +4,9 @@ import musicReducer from './music'
 import { setScore, playNote, setScoreLength, swipeUp, swipeDown } from '../actions'
 
 describe('musicReducer', () => {
-  it('defaults to an empty score', () => {
+  it('defaults to an predefined score', () => {
     const state = musicReducer(undefined)
-    expect(state.score).toEqual([])
+    expect(state.score).toEqual([1, 2, 3])
   })
   it('defaults to an empty song', () => {
     const state = musicReducer(undefined)
@@ -36,6 +36,36 @@ describe('musicReducer', () => {
       const error = `Expected a score with length ${scoreLength} but got one with length ${score.length}.`
       expect(applyInvalidActions).toThrow(error)
     })
+    it('sets songIsScore to true if the song and score match', () => {
+      const score = [0, 0]
+      const scoreLength = 2
+      const actions = [
+        setScoreLength(scoreLength),
+        playNote(0),
+        playNote(0)
+      ]
+      const first = actions.reduce(musicReducer, undefined)
+      expect(first.songIsScore).toEqual(false)
+      const second = musicReducer(first, setScore(score))
+      expect(second.songIsScore).toEqual(true)
+    })
+    it('sets showInstrument to false if songIsScore is true', () => {
+      const score = [0, 0]
+      const scoreLength = 2
+      const playSong = [
+        setScoreLength(scoreLength),
+        swipeUp(),
+        playNote(0),
+        playNote(0)
+      ]
+      const first = playSong.reduce(musicReducer, undefined)
+      expect(first.songIsScore).toEqual(false)
+      expect(first.showInstrument).toEqual(true)
+
+      const second = musicReducer(first, setScore(score))
+      expect(second.songIsScore).toEqual(true)
+      expect(second.showInstrument).toEqual(false)
+    })
   })
   describe('playNote()', () => {
     it('appends a note to the song', () => {
@@ -53,6 +83,42 @@ describe('musicReducer', () => {
       const actions = [setScoreLength(3), play, play, play]
       const state = actions.reduce(musicReducer, undefined)
       expect(state.song).toEqual([0, 0, 0])
+    })
+    it('sets songIsScore to true if the song and score match', () => {
+      const score = [0, 0]
+      const scoreLength = 2
+      const setUpScore = [
+        setScoreLength(scoreLength),
+        setScore(score)
+      ]
+      const first = setUpScore.reduce(musicReducer, undefined)
+      expect(first.songIsScore).toEqual(false)
+      const playSong = [
+        playNote(0),
+        playNote(0)
+      ]
+      const second = playSong.reduce(musicReducer, first)
+      expect(second.songIsScore).toEqual(true)
+    })
+    it('sets showInstrument to false if songIsScore is true', () => {
+      const score = [0, 0]
+      const scoreLength = 2
+      const setUpScore = [
+        setScoreLength(scoreLength),
+        setScore(score),
+        swipeUp()
+      ]
+      const first = setUpScore.reduce(musicReducer, undefined)
+      expect(first.songIsScore).toEqual(false)
+      expect(first.showInstrument).toEqual(true)
+
+      const playSong = [
+        playNote(0),
+        playNote(0)
+      ]
+      const second = playSong.reduce(musicReducer, first)
+      expect(second.songIsScore).toEqual(true)
+      expect(second.showInstrument).toEqual(false)
     })
   })
   describe('swipeUp()', () => {

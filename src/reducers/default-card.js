@@ -15,7 +15,7 @@ const defaultCard = {
   song: { replaceRoom: null, with: null },
   sound: {
     onEnter: null,
-    setBackgroundTo: 'forest-music-2nd-draft.mp3'
+    setBackgroundTo: null
   }
 }
 

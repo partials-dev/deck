@@ -51,20 +51,33 @@ export default function rootReducer (state, action = {}) {
         const newState = {
           ...state,
           gameDeck: {
+            ...state.gameDeck,
             cards: [action.previousCard]
           }
         }
-        return newState
+        return combined(newState, action)
       } else {
         return combined(state, action)
       }
-    case types.APPEND_CARD:
-    // case types.APPEND_CARD:
-    //   // append card to deck
-    //   const deck = gameDeck(state.gameDeck, action)
-    //   const newState = { ...state, gameDeck: deck }
-    //   // reset its position
-    //   return rootReducer(newState, actions.resetCardPosition(action.card.id))
+    case types.PLAY_NOTE:
+      let newState = combined(state, action)
+      if (newState.music.songIsScore) {
+        let replacements = newState.gameDeck.replacements
+        const song = state.gameDeck.cards[0].song
+        replacements = {
+          ...replacements,
+          [song.replaceRoom]: song.with
+        }
+        const newGameDeck = {
+          ...newState.gameDeck,
+          replacements
+        }
+        newState = {
+          ...newState,
+          gameDeck: newGameDeck
+        }
+      }
+      return newState
     default:
       return combined(state, action)
   }
