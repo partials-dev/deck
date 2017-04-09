@@ -14,12 +14,16 @@ export function swipeUp () {
 }
 swipeUp._validArgumentsExample = undefined
 
-export function swipeDown () {
+export function swipeDown (previousCard) {
+  if (previousCard == null) {
+    throw new Error('Previous card must be defined.')
+  }
   return {
-    type: types.SWIPE_DOWN
+    type: types.SWIPE_DOWN,
+    previousCard
   }
 }
-swipeDown._validArgumentsExample = undefined
+swipeDown._validArgumentsExample = defaultCard
 
 export function setScoreLength (scoreLength) {
   if (scoreLength == null || isNaN(scoreLength)) {

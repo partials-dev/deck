@@ -28,11 +28,12 @@ const mapDispatchToProps = (dispatch, props) => {
           dispatch(swipeUp())
           break
         case SIDES.DOWN:
-          dispatch(resetCardPosition(card.id))
-          dispatch(swipeDown())
+          const previousCard = props.getPreviousCard(card)
+          dispatch(swipeDown(previousCard))
+          dispatch(resetCardPosition(previousCard.id))
           break
         default: // left or right
-          const nextCard = props.getNextCard()
+          const nextCard = props.getNextCard(card)
           dispatch(removeCard(card))
           dispatch(appendCard(nextCard))
           break

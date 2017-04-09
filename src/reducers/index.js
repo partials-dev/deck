@@ -46,6 +46,18 @@ export default function rootReducer (state, action = {}) {
     case types.RESET_CARD_POSITION:
       const card = state.gameDeck.cards.find(card => card.id === action.id)
       return resetCardPosition(state, card)
+    case types.SWIPE_DOWN:
+      if (!state.music.showInstrument) {
+        const newState = {
+          ...state,
+          gameDeck: {
+            cards: [action.previousCard]
+          }
+        }
+        return newState
+      } else {
+        return combined(state, action)
+      }
     // case types.APPEND_CARD:
     //   // append card to deck
     //   const deck = gameDeck(state.gameDeck, action)

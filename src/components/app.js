@@ -7,7 +7,7 @@ class App extends Component {
   render () {
     return (
       <div className='app'>
-        <GameDeck getNextCard={this.props.getNextCard} />
+        <GameDeck getNextCard={this.props.getNextCard} getPreviousCard={this.props.getPreviousCard} />
         <Instrument />
       </div>
     )

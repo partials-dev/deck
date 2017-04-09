@@ -68,4 +68,13 @@ describe('root reducer', () => {
       expect(applyInvalidActions).toThrow('Screen dimensions must have already been set.')
     })
   })
+  describe('swipeDown()', () => {
+    it('should go to the previous card if showInstrument is false', () => {
+      const card = { id: 'a-card-id' }
+      const first = rootReducer()
+      expect(first.music.showInstrument).toEqual(false)
+      const next = rootReducer(first, actions.swipeDown(card))
+      expect(next.gameDeck.cards[0]).toEqual(card)
+    })
+  })
 })

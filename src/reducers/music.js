@@ -4,7 +4,8 @@ import play from './play'
 export const defaultMusic = {
   score: [],
   song: [],
-  scoreLength: 6
+  scoreLength: 6,
+  showInstrument: false
 }
 
 export const screenProperties = Object.keys(defaultMusic)

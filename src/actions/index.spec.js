@@ -135,4 +135,10 @@ describe('actions', () => {
       expect(createInvalidAction).toThrow('Can\'t append an undefined card.')
     })
   })
+  describe('swipeDown()', () => {
+    it('throws an error if its argument is undefined', () => {
+      const createInvalidAction = () => actions.swipeDown()
+      expect(createInvalidAction).toThrow('Previous card must be defined.')
+    })
+  })
 })

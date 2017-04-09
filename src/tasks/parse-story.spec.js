@@ -2,7 +2,7 @@
 
 import parseStory from './parse-story'
 
-const rooms =`
+const rooms = `
 title: title
 id: id
 left:
@@ -25,6 +25,7 @@ right:
 ---
 This is the body.
 `
+
 const jsonExample = {
   title: 'title',
   id: 'id',
