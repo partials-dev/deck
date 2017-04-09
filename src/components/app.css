@@ -79,6 +79,10 @@ li {
     border-radius: 3px;
 }
 
+.card * {
+  -webkit-user-drag: none;
+}
+
 .card.left h1 {
   background-color: lightblue;
 }

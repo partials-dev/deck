@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import CardStack from '../look/card-stack'
-import { removeCard, appendCard, resetCardPosition, swipeUp, swipeDown } from '../../actions'
+import { removeCard, appendCard, resetCardPosition, resetCurrentCardPosition, swipeUp, swipeDown } from '../../actions'
 import { SIDES } from '../../reducers/get-lean-direction-for'
 import showInstrumentTranslateAmount from './show-instrument-translate-amount'
 
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch, props) => {
         case SIDES.DOWN:
           const previousCard = props.getPreviousCard(card)
           dispatch(swipeDown(previousCard))
-          dispatch(resetCardPosition(previousCard.id))
+          dispatch(resetCurrentCardPosition())
           break
         default: // left or right
           const nextCard = props.getNextCard(card)
