@@ -31,7 +31,7 @@ describe('root reducer', () => {
       expect(currentCard.position).toEqual(expectedPosition)
       expect(currentCard.initialPosition).toEqual(expectedPosition)
     })
-    it("throws an error if the card size hasn't been sent", () => {
+    it.skip("throws an error if the card size hasn't been sent", () => {
       // don't set card size before trying to reset card position
       const actionList = [...appends, updateScreen, resetCurrentCardPosition]
       const applyInvalidActions = () => applyActions(rootReducer, actionList)
@@ -55,7 +55,7 @@ describe('root reducer', () => {
       expect(updated.position).toEqual(expectedPosition)
       expect(updated.initialPosition).toEqual(expectedPosition)
     })
-    it("throws an error if the card size hasn't been sent", () => {
+    it.skip("throws an error if the card size hasn't been sent", () => {
       // don't set card size before trying to reset card position
       const actionList = [...appends, updateScreen, resetCardPosition]
       const applyInvalidActions = () => applyActions(rootReducer, actionList)

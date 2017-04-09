@@ -58,6 +58,7 @@ export default function rootReducer (state, action = {}) {
       } else {
         return combined(state, action)
       }
+    case types.APPEND_CARD:
     // case types.APPEND_CARD:
     //   // append card to deck
     //   const deck = gameDeck(state.gameDeck, action)
