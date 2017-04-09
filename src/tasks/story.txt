@@ -1,5 +1,6 @@
 title: Start
 id: start C1
+image: forest-fork.png
 left:
   link: forest fork C2A
   text: Go Left
@@ -11,6 +12,7 @@ Two roads, one less traveled...
 ---
 title: Forest Fork
 id: forest fork C2A
+image: forest-fork.png
 left:
   link: character C3A
   text: Go Left
@@ -22,6 +24,7 @@ A fork in the path
 ---
 title: Forest Dead End
 id: forest dead end C2B
+image: forest-dead-end.png
 left:
   link: start C1
   text: Turn Around
@@ -33,6 +36,7 @@ Nowhere to go
 ---
 title: Character
 id: character C3A
+image: forest-character.png
 left:
   link: forest fork C2A
   text: Turn Around
@@ -44,6 +48,7 @@ You meet a guy
 ---
 title: Temple Entrance
 id: temple entrance C3B
+image: temple-entrance.png
 left:
   link: temple fork C4
   text: Go Forward
@@ -55,6 +60,7 @@ Ancient sentient music box creature
 ---
 title: Temple Fork
 id: temple fork C4
+image: temple-fork-1.png
 left:
   link: temple dead end C5A
   text: Go Left
@@ -66,6 +72,7 @@ Creaking gears and leaking winds
 ---
 title: Temple Dead End
 id: temple dead end C5A
+image: temple-dead-end.png
 left:
   link: temple fork C4
   text: Turn Around
@@ -77,6 +84,7 @@ Ancient sentient music box creature
 ---
 title: Temple Fork 2
 id: temple fork 2 C5B
+image: temple-fork-2.png
 left:
   link: locked door C6A
   text: Turn Left
@@ -88,6 +96,7 @@ An interesting choice
 ---
 title: Locked Door
 id: locked door C6A
+image: forest-fork.png
 left:
   link: temple hallway C7
   text: Go Through the Door
@@ -110,6 +119,7 @@ The way forward is open
 ---
 title: Switch
 id: switch C6B
+image: temple-switch-open.png
 left:
   link: temple fork 2 C5B
   text: Turn Around
@@ -124,6 +134,7 @@ The way forward is closed
 ---
 title: Temple Hallway
 id: temple hallway C7
+image: temple-hallway.png
 left:
   link: heart room C8
   text: Go Forward
@@ -135,6 +146,7 @@ You hear music playing...
 ---
 title: Heart Room
 id: heart room C8
+image: temple-heart-room.png
 left:
   link:
   text: Learn the song
