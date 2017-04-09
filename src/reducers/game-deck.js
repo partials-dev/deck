@@ -2,14 +2,30 @@ import * as types from '../actions/types'
 import * as actions from '../actions'
 import defaultCard from './default-card'
 import cardReducer from './card'
+import story from '../story.json'
 
 const defaultState = {
   cards: [
     // defaultCard
-  ]
+  ],
+  replacements: {
+
+  }
 }
 
 const matches = card => otherCard => card.id === otherCard.id
+const tryGetReplacement = (card, replacements) => {
+  const replacementId = replacements[card.id]
+  if (replacementId) {
+    const replacement = story.find(card => card.id === replacementId)
+    return {
+      ...defaultCard,
+      ...replacement
+    }
+  } else {
+    return card
+  }
+}
 
 export default function gameDeck (state = defaultState, action = {}) {
   switch (action.type) {
@@ -37,12 +53,13 @@ export default function gameDeck (state = defaultState, action = {}) {
       return { ...state, cards }
     }
     case types.APPEND_CARD: {
+      const cardToAppend = tryGetReplacement(action.card, state.replacements)
       state.cards.forEach(card => {
-        if (card.id === action.card.id) {
+        if (card.id === cardToAppend.id) {
           throw new Error('Ids must be unique.')
         }
       })
-      const cards = [...state.cards, action.card]
+      const cards = [...state.cards, cardToAppend]
       return { ...state, cards }
     }
     default:

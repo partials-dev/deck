@@ -8,6 +8,7 @@ right:
   link: forest dead end C2B
   text: Go Right
 sound:
+  playOnceOnEnter:
   setBackgroundTo: forest-music-2nd-draft.mp3
 ---
 Two roads, one less traveled...
