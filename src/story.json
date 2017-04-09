@@ -11,6 +11,9 @@
       "link": "forest dead end C2B",
       "text": "Take the road less traveled by"
     },
+    "sound": {
+      "setBackgroundTo": "forest-music-2nd-draft.mp3"
+    },
     "body": "Two roads diverge in the wood,\nAnd you can not travel both."
   },
   {
@@ -46,6 +49,65 @@
     "id": "character C3A",
     "image": "forest-character.png",
     "left": {
+      "link": "character C3B",
+      "text": "..."
+    },
+    "right": {
+      "link": "character C3B",
+      "text": "..."
+    },
+    "sound": {
+      "playOnceOnEnter": "character-1.mp3"
+    },
+    "body": "Well look at you. I didn't think I'd ever see another biped be able to move again. After the great silence, i assumed everyone had frozen where they were. Statues to be gawked at in the distant future...."
+  },
+  {
+    "title": "Character",
+    "id": "character C3B",
+    "image": "forest-character.png",
+    "left": {
+      "link": "character C3C",
+      "text": "..."
+    },
+    "right": {
+      "link": "character C3C",
+      "text": "You sure do talk a lot"
+    },
+    "body": "But what a welcomed surprise you are! And especially in your condition. Breathing, Moving! You've got it all! Just try not to let it get to your head. I've got no use for a egotist!"
+  },
+  {
+    "title": "Character",
+    "id": "character C3C",
+    "image": "forest-character.png",
+    "left": {
+      "link": "character C3D",
+      "text": "How kind of you...."
+    },
+    "right": {
+      "link": "character C3D",
+      "text": "Just get to the point"
+    },
+    "body": "Well despite your obviously inflated self-worth, I'm gonna go on a limb and let you help me."
+  },
+  {
+    "title": "Character",
+    "id": "character C3D",
+    "image": "forest-character.png",
+    "left": {
+      "link": "character C3E",
+      "text": "That's not demanding of you at all..."
+    },
+    "right": {
+      "link": "character C3E",
+      "text": "Well, I guess I could do that for a price"
+    },
+    "body": "There is a structure further in the forest that once filled the air with beautiful music for miles. But it hasn't made so much as a peep in ages. The air has gotten stale and the relative silence has had just made everyone so uninspired we're all practically useless. You need to go in there and fix it!"
+  },
+  {
+    "title": "Character",
+    "id": "character C3E",
+    "image": "forest-character.png",
+    "left": {
       "link": "forest fork C2A",
       "text": "Turn Around"
     },
@@ -53,7 +115,7 @@
       "link": "forest fork C2A",
       "text": "Turn Around"
     },
-    "body": ""
+    "body": "I'm so glad you're willing to help! Oh and take this helix horn! It's a little creepy in there and there is nothing like a little music to ease the tension of an unsettling atmosphere."
   },
   {
     "title": "Temple Entrance",
@@ -66,6 +128,9 @@
     "right": {
       "link": "temple fork C4",
       "text": "Go in the door"
+    },
+    "sound": {
+      "setBackgroundTo": "forest-music-2nd-draft.mp3"
     },
     "body": "You're not sure if what you're looking at is a building, a giant, or a musical instrument but there \"is\" a door in front of you."
   },
@@ -82,7 +147,7 @@
       "text": "Go in the door to the right"
     },
     "sound": {
-      "setBackgroundTo": "dungeon-song-3rd-draft.mp3"
+      "setBackgroundTo": "dungeon-music-drums.mp3"
     },
     "body": "The sounds of creaking gears and hissing pipes reverberate around the damp, stone room."
   },
@@ -119,11 +184,11 @@
     "id": "locked door C6A",
     "image": "temple-locked-door.png",
     "left": {
-      "link": "temple hallway C7",
+      "link": "temple fork 2 C5B",
       "text": "Turn Around"
     },
     "right": {
-      "link": "temple hallway C7",
+      "link": "temple fork 2 C5B",
       "text": "Turn Around"
     },
     "body": "There only seems to be hissing pipes and a door that's barred shut in this room."
@@ -179,13 +244,17 @@
     "id": "heart room C8",
     "image": "temple-heart-room.png",
     "left": {
-      "link": null,
+      "link": "heart room C8",
       "text": "Learn the song"
     },
     "right": {
-      "link": null,
+      "link": "heart room C8",
       "text": "Learn the song"
     },
-    "body": "You learn a song."
+    "sound": {
+      "playOnceOnEnter": "character-2.mp3",
+      "setBackgroundTo": "dungeon-music-drums-and-melody.mp3"
+    },
+    "body": "Thank you for getting my air flow back together in a reasonable way! Now I can move this big lumbering mass to start pumping out sounds to all of the forest. I can't imagine how long it's been since anyone heard this song last. Take a listen and pick out a few notes yourself!"
   }
 ]

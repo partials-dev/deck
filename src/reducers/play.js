@@ -11,15 +11,16 @@ if (window.AudioNode) {
       attack: 0.005,
       sustain: 1,
       decay: 10,
-      release: 2
+      release: 2.5
     },
     portamento: 0
   })
+  synth.volume.value = -7
 
   const noteIdToPitches = {
-    0: ['C4', 'Eb4'],
-    1: ['D4', 'F4'],
-    2: ['Eb4', 'G4'],
+    0: ['D4', 'D5'],
+    1: ['E4', 'E5'],
+    2: ['F4', 'F5'],
     3: ['F'],
     4: ['G'],
     5: ['Ab'],

@@ -2,9 +2,9 @@ import { APPEND_CARD, SET_SCORE, PLAY_NOTE, SET_SCORE_LENGTH, SWIPE_UP, SWIPE_DO
 import { playNote, setBackgroundTo, playOnce } from './play'
 
 export const defaultMusic = {
-  score: [0, 1, 2],
+  score: [2, 1, 0, 2, 0, 1],
   song: [],
-  scoreLength: 3,
+  scoreLength: 6,
   showInstrument: false,
   songIsScore: false
 }
