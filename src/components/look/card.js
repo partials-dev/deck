@@ -5,6 +5,7 @@ import translate3d from './translate3d'
 import { SIDES } from '../../reducers/get-lean-direction-for'
 
 class Card extends React.Component {
+
   resetPosition () {
     const screen = document.getElementById('master-root')
     const card = this.card
@@ -48,11 +49,12 @@ class Card extends React.Component {
       [SIDES.DOWN]: 'Go back'
     }
     const subtitle = subtitlesByDirection[this.props.leanDirection]
+    const image = this.props.image ? <img src={this.props.image} /> : null
     return (
       <div ref={gotRef} style={style} className={classes}>
         <h1>{this.props.title}</h1>
         <h2>{subtitle}</h2>
-        <img src={this.props.image} />
+        {image}
         <p>{this.props.body}</p>
       </div>
     )
