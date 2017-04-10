@@ -2,6 +2,7 @@
   {
     "title": "Hello",
     "id": "tutorial 1",
+    "image": "tutorial-1.png",
     "left": {
       "link": "tutorial 2",
       "text": "Ok..."
@@ -15,7 +16,7 @@
   {
     "title": "How to play",
     "id": "tutorial 2",
-    "image": "tutorial-2",
+    "image": "tutorial-2.png",
     "left": {
       "link": "tutorial 3A",
       "text": "This is left."
@@ -29,7 +30,7 @@
   {
     "title": "You chose left!",
     "id": "tutorial 3A",
-    "image": "tutorial-3",
+    "image": "tutorial-3.png",
     "left": {
       "link": "tutorial 4",
       "text": "Wait, what?"
@@ -43,7 +44,7 @@
   {
     "title": "You chose right!",
     "id": "tutorial 3B",
-    "image": "tutorial-3",
+    "image": "tutorial-3.png",
     "left": {
       "link": "tutorial 4",
       "text": "Aww, stop. 😊"
@@ -57,7 +58,7 @@
   {
     "title": "Moving on...",
     "id": "tutorial 4",
-    "image": "tutorial-4",
+    "image": "tutorial-4.png",
     "left": {
       "link": "tutorial 5",
       "text": "Ugh, just get to the game already!"
