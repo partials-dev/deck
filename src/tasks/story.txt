@@ -12,7 +12,7 @@ Welcome to Listener! This is a swipe-based adventure game made by Partials! You 
 ---
 title: How to play
 id: tutorial 2
-image: tutorial-2
+image: tutorial-2.png
 left:
  link: tutorial 3A
  text: This is left.
@@ -24,7 +24,7 @@ You can make decisions or respond to dialog by swiping right or left. Drag the c
 ---
 title: You chose left!
 id: tutorial 3A
-image: tutorial-3
+image: tutorial-3.png
 left:
  link: tutorial 4
  text: Wait, what?
@@ -36,7 +36,7 @@ Oh. Ok, that's fine. I would've gone the other way... but that's fine! Your choi
 ---
 title: You chose right!
 id: tutorial 3B
-image: tutorial-3
+image: tutorial-3.png
 left:
  link: tutorial 4
  text: Aww, stop. 😊
@@ -48,7 +48,7 @@ Ah, yes. Good. I knew you were a smart cookie.
 ---
 title: Moving on...
 id: tutorial 4
-image: tutorial-4
+image: tutorial-4.png
 left:
  link: tutorial 5
  text: Ugh, just get to the game already!

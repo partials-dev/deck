@@ -1,5 +1,88 @@
 [
   {
+    "title": "Hello",
+    "id": "tutorial 1",
+    "left": {
+      "link": "tutorial 2",
+      "text": "Ok..."
+    },
+    "right": {
+      "link": "tutorial 2",
+      "text": "COOL!!"
+    },
+    "body": "Welcome to Listener! This is a swipe-based adventure game made by Partials! You can basically think of it as Tinder-Zelda. ;)"
+  },
+  {
+    "title": "How to play",
+    "id": "tutorial 2",
+    "image": "tutorial-2",
+    "left": {
+      "link": "tutorial 3A",
+      "text": "This is left."
+    },
+    "right": {
+      "link": "tutorial 3B",
+      "text": "This is right."
+    },
+    "body": "You can make decisions or respond to dialog by swiping right or left. Drag the card to each side to see what each direction does. Read carefully..."
+  },
+  {
+    "title": "You chose left!",
+    "id": "tutorial 3A",
+    "image": "tutorial-3",
+    "left": {
+      "link": "tutorial 4",
+      "text": "Wait, what?"
+    },
+    "right": {
+      "link": "tutorial 4",
+      "text": "Oooook..."
+    },
+    "body": "Oh. Ok, that's fine. I would've gone the other way... but that's fine! Your choice. Yeesh..."
+  },
+  {
+    "title": "You chose right!",
+    "id": "tutorial 3B",
+    "image": "tutorial-3",
+    "left": {
+      "link": "tutorial 4",
+      "text": "Aww, stop. 😊"
+    },
+    "right": {
+      "link": "tutorial 4",
+      "text": "Get to the point."
+    },
+    "body": "Ah, yes. Good. I knew you were a smart cookie."
+  },
+  {
+    "title": "Moving on...",
+    "id": "tutorial 4",
+    "image": "tutorial-4",
+    "left": {
+      "link": "tutorial 5",
+      "text": "Ugh, just get to the game already!"
+    },
+    "right": {
+      "link": "tutorial 5",
+      "text": "Cool, thanks for the tips!"
+    },
+    "body": "You can also swipe the card down to backtrack, and eventually pulling the card up will reveal an important tool."
+  },
+  {
+    "title": "Ready?",
+    "id": "tutorial 5",
+    "image": "tutorial-5.png",
+    "left": {
+      "link": "tutorial 1",
+      "text": "I think I need the instructions again."
+    },
+    "right": {
+      "link": "start C1",
+      "text": "Yeah!"
+    },
+    "body": "Enter the dungeon?"
+  },
+  {
     "title": "Start",
     "id": "start C1",
     "image": "forest-fork.png",
