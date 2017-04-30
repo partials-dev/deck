@@ -70,7 +70,7 @@ right:
 ---
 Enter the dungeon?
 ---
-title: Start
+title: Forest Path
 id: start C1
 image: forest-fork.png
 left:
@@ -85,7 +85,7 @@ sound:
 Two roads diverge in the wood,
 And you can not travel both.
 ---
-title: Forest Fork
+title: Another Fork...
 id: forest fork C2A
 image: forest-fork.png
 left:
@@ -95,10 +95,9 @@ right:
  link: temple entrance C3B
  text: Follow the road on the right
 ---
-Another fork in the road.
-Decisions, decisions.
+Another fork in the road. Decisions, decisions.
 ---
-title: Forest Dead End
+title: Dead End
 id: forest dead end C2B
 image: forest-dead-end.png
 left:
@@ -110,33 +109,33 @@ right:
 ---
 Alas, the lack of travelers has made this road impassable.
 ---
-title: Character
+title: A Stranger Appears
 id: character C3A
 image: forest-character.png
 left:
  link: character C3B
- text: ...
+ text: The great what...?
 right:
  link: character C3B
- text: ...
+ text: ... (Say nothing)
 sound:
   playOnceOnEnter: character-1.mp3
 ---
-Well look at you. I didn't think I'd ever see another biped be able to move again. After the great silence, i assumed everyone had frozen where they were. Statues to be gawked at in the distant future....
+Well look at you. I didn't think I'd ever see another biped be able to move again. After the great silence, I assumed everyone had frozen where they were. Statues to be gawked at in the distant future....
 ---
-title: Character
+title: The stranger continues...
 id: character C3B
 image: forest-character.png
 left:
  link: character C3C
- text: ...
+ text: I'll keep that in mind.
 right:
  link: character C3C
  text: You sure do talk a lot
 ---
 But what a welcomed surprise you are! And especially in your condition. Breathing, Moving! You've got it all! Just try not to let it get to your head. I've got no use for a egotist!
 ---
-title: Character
+title: This jerk won't shut up.
 id: character C3C
 image: forest-character.png
 left:
@@ -148,7 +147,7 @@ right:
 ---
 Well despite your obviously inflated self-worth, I'm gonna go on a limb and let you help me.
 ---
-title: Character
+title: A Humble Request
 id: character C3D
 image: forest-character.png
 left:
@@ -160,9 +159,21 @@ right:
 ---
 There is a structure further in the forest that once filled the air with beautiful music for miles. But it hasn't made so much as a peep in ages. The air has gotten stale and the relative silence has had just made everyone so uninspired we're all practically useless. You need to go in there and fix it!
 ---
-title: Character
+title: A Humble Request
 id: character C3E
 image: forest-character.png
+left:
+ link: character C3F
+ text: Anything else?
+right:
+ link: character C3F
+ text: Anything else?
+---
+I'm so glad you're willing to help! Oh and take this helix horn! It's a little creepy in there and there is nothing like a little music to ease the tension of an unsettling atmosphere.
+---
+title: And A Song
+id: character C3F
+image: song-1.png
 left:
  link: forest fork C2A
  text: Turn Around
@@ -170,9 +181,9 @@ right:
  link: forest fork C2A
  text: Turn Around
 ---
-I'm so glad you're willing to help! Oh and take this helix horn! It's a little creepy in there and there is nothing like a little music to ease the tension of an unsettling atmosphere.
+You might need this song, too. Try it out.
 ---
-title: Temple Entrance
+title: The Temple... I think.
 id: temple entrance C3B
 image: temple-entrance.png
 left:
@@ -186,7 +197,7 @@ sound:
 ---
 You're not sure if what you're looking at is a building, a giant, or a musical instrument but there "is" a door in front of you.
 ---
-title: Temple Fork
+title: Inside
 id: temple fork C4
 image: temple-fork-1.png
 left:
@@ -198,9 +209,9 @@ right:
 sound:
  setBackgroundTo: dungeon-music-drums.mp3
 ---
-The sounds of creaking gears and hissing pipes reverberate around the damp, stone room.
+The sounds of creaking gears and hissing pipes reverberate around the damp, stone room. You see 2 doors.
 ---
-title: Temple Dead End
+title: A Dead End
 id: temple dead end C5A
 image: temple-dead-end.png
 left:
@@ -210,9 +221,9 @@ right:
  link: temple fork C4
  text: Turn Around
 ---
-It seems the hallway has collapsed up ahead.
+It seems the hallway has collapsed up ahead. 
 ---
-title: Temple Fork 2
+title: Another room
 id: temple fork 2 C5B
 image: temple-fork-2.png
 left:
@@ -234,7 +245,7 @@ right:
  link: temple fork 2 C5B
  text: Turn Around
 ---
-There only seems to be hissing pipes and a door that's barred shut in this room.
+The door is barred shut. There must be a way to open it somewhere...
 ---
 title: Unlocked Door
 id: unlocked door C6A
@@ -246,7 +257,7 @@ right:
  link: temple hallway C7
  text: Go through the door
 ---
-There seem to be some hissing pipes and a door in this room.
+The door has a bar, but it's unlocked!
 ---
 title: Switch
 id: switch C6B
@@ -261,9 +272,9 @@ song:
  replaceRoom: locked door C6A
  with: unlocked door C6A
 ---
-There are some weird mechanisms in here and some foreign graffiti on the wall.
+There are some weird mechanisms in here and some familiar symbols carved into the pipes.
 ---
-title: Temple Hallway
+title: Hallway
 id: temple hallway C7
 image: temple-hallway.png
 left:
